@@ -1,0 +1,6 @@
+{
+  "name": "KURYERİST — Wolt Qeydiyyatı | Bakı",
+  "description": "Bakıda Wolt kuryer qeydiyyatı. Sərbəst iş qrafiki, 75%-80% qazanc sistemi və sürətli aktivləşdirmə.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

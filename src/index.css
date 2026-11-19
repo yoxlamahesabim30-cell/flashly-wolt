@@ -1,0 +1,48 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Golos Text", "Noto Sans", system-ui, -apple-system, sans-serif;
+  --font-serif: "Cormorant Garamond", "Noto Serif", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-navy-deep: #0A1A3A;
+  --color-navy-mid: #0B2340;
+  --color-gold: #D4AF37;
+  --color-gold-deep: #C9A227;
+  --color-gold-bright: #E8C766;
+  --color-cream: #F5F1E8;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+.gold-shimmer-bg {
+  background: linear-gradient(135deg, #E8C766 0%, #D4AF37 50%, #C9A227 100%);
+}
+
+.gold-shimmer-bg:hover {
+  background: linear-gradient(135deg, #F0D47E 0%, #DFBA44 50%, #D4AF37 100%);
+}
+
+.gold-text-gradient {
+  background: linear-gradient(135deg, #F3DC8A 0%, #D4AF37 55%, #C9A227 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
