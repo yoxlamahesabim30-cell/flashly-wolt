@@ -1041,6 +1041,11 @@
         border-radius: 16px;
         overflow: hidden;
         margin-bottom: 12px;
+        transition: border-color 0.2s ease;
+      }
+
+      .faq-item.is-open {
+        border-color: var(--border-gold-strong);
       }
 
       .faq-btn {
@@ -1059,28 +1064,50 @@
         gap: 16px;
       }
 
-      .faq-chevron {
-        transition: transform 0.2s ease;
+      .faq-pm {
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+        background: rgba(212, 175, 55, 0.14);
+        border: 1px solid rgba(212, 175, 55, 0.45);
         color: var(--text-gold);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         flex-shrink: 0;
+        transition: background-color 0.2s ease, color 0.2s ease;
       }
 
-      .faq-item.is-open .faq-chevron {
-        transform: rotate(180deg);
+      .faq-item.is-open .faq-pm {
+        background: linear-gradient(135deg, #E8C766, #D4AF37);
+        color: #0A1A3A;
+        border-color: #D4AF37;
+      }
+
+      .faq-answer-wrap {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .faq-item.is-open .faq-answer-wrap {
+        grid-template-rows: 1fr;
+      }
+
+      .faq-answer-inner {
+        overflow: hidden;
       }
 
       .faq-answer {
-        display: none;
-        padding: 0 22px 18px;
-        padding-top: 12px;
+        padding: 12px 22px 18px;
         border-top: 1px solid var(--border-gold);
         color: var(--text-muted);
         font-size: 15px;
         line-height: 1.65;
-      }
-
-      .faq-item.is-open .faq-answer {
-        display: block;
       }
 
       /* OFFICIAL ROUND SOCIAL BUTTONS */
@@ -1299,6 +1326,35 @@
           border-radius: 20px;
           padding: 30px;
         }
+      }
+
+      .chooser-option {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 14px 16px;
+        border-radius: 14px;
+        background: var(--bg-elevated);
+        border: 1px solid var(--border-gold);
+        color: var(--text-main);
+        transition: transform 0.16s ease, border-color 0.16s ease, background-color 0.16s ease;
+      }
+
+      .chooser-option:hover {
+        transform: translateY(-2px);
+        border-color: #D4AF37;
+      }
+
+      .chooser-badge {
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
       }
 
       /* FOOTER */
@@ -1962,7 +2018,7 @@
         </div>
       </section>
 
-      <!-- 9. SƏSLİ İZAH / VİDEO TƏQDİMAT TƏLƏBİ -->
+      <!-- 9. VİDEO TƏQDİMAT TƏLƏBİ -->
       <section id="video-teqdimat" class="section section-alt">
         <div class="container" style="max-width: 860px;">
           <div class="lux-card" style="padding: 32px;">
@@ -1993,34 +2049,6 @@
             <p style="margin-top: 16px; font-size: 15px; color: var(--text-muted);">
               Bu video qeydiyyatın rəsmi təsdiqi hesab olunur və hesabın aktivləşdirilməsi üçün tələb edilir.
             </p>
-
-            <!-- AUDIO GUIDE PLAYER -->
-            <div style="margin-top: 24px; border-radius: 14px; background: #07142C; border: 1px solid rgba(212, 175, 55, 0.35); color: #FFFFFF; padding: 20px;">
-              <div style="display: flex; align-items: center; gap: 16px;">
-                <button
-                  type="button"
-                  id="audio-toggle-btn"
-                  aria-label="Səsli izahı dinlə"
-                  class="btn-gold"
-                  style="width: 48px; height: 48px; min-height: 48px; padding: 0; border-radius: 12px; flex-shrink: 0;"
-                >
-                  <svg id="audio-icon-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-left: 2px;"><polygon points="6 3 20 12 6 21 6 3"/></svg>
-                  <svg id="audio-icon-pause" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-                </button>
-                <div style="flex: 1; min-width: 0;">
-                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                    <span style="font-weight: 700; font-size: 15px;">Səsli İzahı Dinlə</span>
-                    <span id="audio-time-label" class="font-mono" style="font-size: 12px; color: #E8C766;">00:00 / 00:26</span>
-                  </div>
-                  <div id="audio-scrub-bar" style="height: 10px; border-radius: 999px; background: rgba(255,255,255,0.16); overflow: hidden; cursor: pointer;">
-                    <div id="audio-progress-fill" style="height: 100%; width: 0%; background: linear-gradient(90deg, #C9A227, #E8C766); transition: width 0.25s linear;"></div>
-                  </div>
-                </div>
-              </div>
-              <p id="audio-caption-text" style="margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(212,175,55,0.2); font-size: 14px; color: #E2DDD2;">
-                1. Şəxsiyyət vəsiqənizi əlinizdə tutun və üzünüzün kameraya aydın düşdüyünə əmin olun.
-              </p>
-            </div>
           </div>
         </div>
       </section>
@@ -2059,67 +2087,8 @@
         </div>
       </section>
 
-      <!-- 11. BİZİ HARADA TAPARSAN? (MAP + CONTACTS) -->
-      <section id="elaqe" class="section section-alt">
-        <div class="container">
-          <div style="margin-bottom: 36px;">
-            <p class="kicker">Bakı Ofisi və Əlaqə</p>
-            <h2 class="section-title">Bizi Harada Taparsan?</h2>
-          </div>
-
-          <div class="split-2">
-            <div style="display: flex; flex-direction: column; gap: 16px;">
-              <div class="lux-card">
-                <h3 style="font-size: 18px; font-weight: 700;">Ofis Ünvanımız</h3>
-                <p id="office-address-text" style="margin-top: 10px; font-size: 15px; color: var(--text-muted); font-weight: 500;"></p>
-                <div class="grid-2" style="margin-top: 18px; gap: 10px;">
-                  <a id="map-open-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-gold" style="min-height: 46px; font-size: 14px; padding: 10px 14px;">Xəritədə Aç</a>
-                  <a id="map-directions-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-navy-gold" style="min-height: 46px; font-size: 14px; padding: 10px 14px;">Yol Tarifi Al</a>
-                </div>
-                <button type="button" id="copy-address-btn" class="btn-navy-gold" style="width: 100%; margin-top: 10px; min-height: 44px; font-size: 13px; background: var(--bg-elevated); color: var(--text-main);">
-                  Ünvanı Kopyala
-                </button>
-              </div>
-
-              <div class="lux-card" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px;">
-                <div>
-                  <span style="font-size: 12px; font-weight: 600; color: var(--text-gold);">Əlaqə nömrəsi 1</span>
-                  <div class="font-mono" style="font-size: 19px; font-weight: 700;">+994 99 800 75 65</div>
-                </div>
-                <div style="display: flex; gap: 8px;">
-                  <a href="tel:+994998007565" class="btn-navy-gold" style="min-height: 44px; padding: 8px 16px; font-size: 13px;">Zəng Et</a>
-                  <a href="https://wa.me/994998007565" target="_blank" rel="noopener noreferrer" class="btn-gold" style="min-height: 44px; padding: 8px 16px; font-size: 13px;">WhatsApp</a>
-                </div>
-              </div>
-
-              <div class="lux-card" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px;">
-                <div>
-                  <span style="font-size: 12px; font-weight: 600; color: var(--text-gold);">Əlaqə nömrəsi 2</span>
-                  <div class="font-mono" style="font-size: 19px; font-weight: 700;">+994 60 446 64 04</div>
-                </div>
-                <div style="display: flex; gap: 8px;">
-                  <a href="tel:+994604466404" class="btn-navy-gold" style="min-height: 44px; padding: 8px 16px; font-size: 13px;">Zəng Et</a>
-                  <a href="https://wa.me/994604466404" target="_blank" rel="noopener noreferrer" class="btn-gold" style="min-height: 44px; padding: 8px 16px; font-size: 13px;">WhatsApp</a>
-                </div>
-              </div>
-            </div>
-
-            <div style="border-radius: 18px; overflow: hidden; border: 1px solid var(--border-gold-strong); box-shadow: var(--shadow-card); min-height: 360px; background: #0A1A3A;">
-              <iframe
-                id="office-map-iframe"
-                title="FLASHLY Bakı Ofisi Xəritəsi — Media FM, Məmməd Araz 25A, Yeni English Yard Biznes Mərkəzi"
-                style="width: 100%; height: 100%; min-height: 360px; border: 0;"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 12. KURYERLƏRİMİZ NƏ DEYİR? -->
-      <section id="reyler" class="section">
+      <!-- 11. KURYERLƏRİMİZ NƏ DEYİR? -->
+      <section id="reyler" class="section section-alt">
         <div class="container">
           <div style="text-align: center; margin-bottom: 36px;">
             <p class="kicker">Real Təcrübələr</p>
@@ -2163,8 +2132,194 @@
         </div>
       </section>
 
-      <!-- 13. INSTAGRAM & TIKTOK SHOWCASE -->
-      <section id="sosial-showcase" class="section section-alt">
+      <!-- 12. FAQ SECTION (10 Q&A ACCORDION) -->
+      <section id="suallar" class="section">
+        <div class="container" style="max-width: 820px;">
+          <div style="text-align: center; margin-bottom: 36px;">
+            <p class="kicker">Tez-tez Verilən Suallar</p>
+            <h2 class="section-title">FAQ - Suallarınıza Cavab</h2>
+          </div>
+
+          <div id="faq-list">
+            <div class="faq-item">
+              <button type="button" class="faq-btn" aria-expanded="false">
+                <span>1. Qeydiyyatdan necə keçə bilərəm?</span>
+                <span class="faq-pm" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer-wrap">
+                <div class="faq-answer-inner">
+                  <div class="faq-answer">Saytdakı "Qeydiyyatdan Keç" düyməsini basın, formanı doldurun. 30 dəqiqə ərzində WhatsApp-dan sizə yazacağıq.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-btn" aria-expanded="false">
+                <span>2. Hansı sənədlər lazımdır?</span>
+                <span class="faq-pm" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer-wrap">
+                <div class="faq-answer-inner">
+                  <div class="faq-answer">Şəxsiyyət vəsiqəsi mütləqdir. Moto və ya Avto ilə işləyəcəksinizsə, sürücülük vəsiqəsi və nəqliyyatın texniki şəhadətnaməsi də lazımdır. Piyada və Velosiped üçün ancaq şəxsiyyət vəsiqəsi kifayətdir.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-btn" aria-expanded="false">
+                <span>3. Nə qədər qazana bilərəm?</span>
+                <span class="faq-pm" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer-wrap">
+                <div class="faq-answer-inner">
+                  <div class="faq-answer">Qazancınız işlədiyiniz saatdan və sifariş sayından asılıdır. Tam işləyən kuryerlər həftədə yaxşı qazanc əldə edir. Saytdakı Hesablayıcı bölməsindən təxmini qazancınızı hesablaya bilərsiniz.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-btn" aria-expanded="false">
+                <span>4. Ödəniş nə vaxt köçürülür?</span>
+                <span class="faq-pm" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer-wrap">
+                <div class="faq-answer-inner">
+                  <div class="faq-answer">Qazancınız hər həftə cümə axşamı bank kartınıza köçürülür.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-btn" aria-expanded="false">
+                <span>5. Depozit ödəməliyəm?</span>
+                <span class="faq-pm" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer-wrap">
+                <div class="faq-answer-inner">
+                  <div class="faq-answer">Bəli, Wolt çantası üçün birdəfəlik depozit ödənilir. Depozit haqqında ətraflı məlumatı ofisimizdə veririk.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-btn" aria-expanded="false">
+                <span>6. Part-time işləyə bilərəm?</span>
+                <span class="faq-pm" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer-wrap">
+                <div class="faq-answer-inner">
+                  <div class="faq-answer">Bəli. Öz qrafikini özün seçirsən. İstədiyin saatda Onlayn ol, istədiyin vaxt çıx. Məcburi qrafik yoxdur.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-btn" aria-expanded="false">
+                <span>7. Hansı nəqliyyat ilə işləyə bilərəm?</span>
+                <span class="faq-pm" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer-wrap">
+                <div class="faq-answer-inner">
+                  <div class="faq-answer">Piyada, Velosiped, Moto və Avto ilə işləmək olur. Qeydiyyat zamanı nəqliyyat növünü seçin.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-btn" aria-expanded="false">
+                <span>8. Təcrübəm yoxdur, olar?</span>
+                <span class="faq-pm" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer-wrap">
+                <div class="faq-answer-inner">
+                  <div class="faq-answer">Bəli, olar. Təcrübə lazım deyil. Ofisimizdə qısa izah veririk və ilk sifarişinizdə kömək edirik.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-btn" aria-expanded="false">
+                <span>9. Yaş həddi var?</span>
+                <span class="faq-pm" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer-wrap">
+                <div class="faq-answer-inner">
+                  <div class="faq-answer">18 yaşdan yuxarı hər kəs müraciət edə bilər.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-btn" aria-expanded="false">
+                <span>10. Problemim olsa hara yazım?</span>
+                <span class="faq-pm" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer-wrap">
+                <div class="faq-answer-inner">
+                  <div class="faq-answer">WhatsApp-dan yazın: Yeni qeydiyyat üçün +994 99 800 75 65, Aktiv kuryerlər üçün +994 60 446 64 04. Ofisimiz: Məmməd Araz 25A, English Yard, 2-ci mərtəbə, 7-ci ofis - Media FM.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 28px; text-align: center;">
+            <button type="button" class="btn-gold js-open-wa-chooser" style="min-height: 48px; padding: 12px 24px; font-size: 15px;">
+              Cavabını tapmadın? WhatsApp-dan yaz
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 13. BİZİ HARADA TAPARSAN? (ADDRESS + CONTACTS, NO MAP EMBED) -->
+      <section id="elaqe" class="section section-alt">
+        <div class="container">
+          <div style="margin-bottom: 36px;">
+            <p class="kicker">Bakı Ofisi və Əlaqə</p>
+            <h2 class="section-title">Bizi Harada Taparsan?</h2>
+          </div>
+
+          <div class="grid-2" style="align-items: start;">
+            <div class="lux-card">
+              <h3 style="font-size: 18px; font-weight: 700;">Ofis Ünvanımız</h3>
+              <p id="office-address-text" style="margin-top: 10px; font-size: 15px; color: var(--text-muted); font-weight: 500;"></p>
+              <div class="grid-2" style="margin-top: 18px; gap: 10px;">
+                <button type="button" class="btn-gold js-open-map-chooser" style="min-height: 46px; font-size: 14px; padding: 10px 14px;">Xəritədə Aç</button>
+                <button type="button" class="btn-navy-gold js-open-map-chooser" style="min-height: 46px; font-size: 14px; padding: 10px 14px;">Yol Tarifi Al</button>
+              </div>
+              <button type="button" id="copy-address-btn" class="btn-navy-gold" style="width: 100%; margin-top: 10px; min-height: 44px; font-size: 13px; background: var(--bg-elevated); color: var(--text-main);">
+                Ünvanı Kopyala
+              </button>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <div class="lux-card" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px;">
+                <div>
+                  <span style="font-size: 12px; font-weight: 600; color: var(--text-gold);">Əlaqə nömrəsi 1</span>
+                  <div class="font-mono" style="font-size: 19px; font-weight: 700;">+994 99 800 75 65</div>
+                </div>
+                <div style="display: flex; gap: 8px;">
+                  <a href="tel:+994998007565" class="btn-navy-gold" style="min-height: 44px; padding: 8px 16px; font-size: 13px;">Zəng Et</a>
+                  <button type="button" class="btn-gold js-open-wa-chooser" style="min-height: 44px; padding: 8px 16px; font-size: 13px;">WhatsApp</button>
+                </div>
+              </div>
+
+              <div class="lux-card" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px;">
+                <div>
+                  <span style="font-size: 12px; font-weight: 600; color: var(--text-gold);">Əlaqə nömrəsi 2</span>
+                  <div class="font-mono" style="font-size: 19px; font-weight: 700;">+994 60 446 64 04</div>
+                </div>
+                <div style="display: flex; gap: 8px;">
+                  <a href="tel:+994604466404" class="btn-navy-gold" style="min-height: 44px; padding: 8px 16px; font-size: 13px;">Zəng Et</a>
+                  <button type="button" class="btn-gold js-open-wa-chooser" style="min-height: 44px; padding: 8px 16px; font-size: 13px;">WhatsApp</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 14. INSTAGRAM & TIKTOK SHOWCASE -->
+      <section id="sosial-showcase" class="section">
         <div class="container">
           <div class="lux-card" style="padding: 32px;">
             <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding-bottom: 24px; border-bottom: 1px solid var(--border-gold);">
@@ -2175,7 +2330,7 @@
                 <div>
                   <h2 style="font-size: 24px; font-weight: 800;">Instagram Səhifəmiz</h2>
                   <div style="margin-top: 4px; font-size: 14px;">
-                    <strong style="color: var(--text-gold);">@woltqeydiyyati</strong> · <span class="font-mono" style="color: var(--text-muted);">4 850 izləyici</span>
+                    <strong style="color: var(--text-gold);">@woltqeydiyyati</strong>
                   </div>
                   <p style="margin-top: 4px; font-size: 13px; color: var(--text-muted);">Wolt Kuryer Məlumatı | Bakı</p>
                 </div>
@@ -2232,82 +2387,6 @@
               </div>
             </div>
             <a href="https://www.tiktok.com/@kuryer_qeydiyyati" target="_blank" rel="noopener noreferrer" class="btn-gold">TikTok-da İzlə</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- 14. FAQ SECTION (8 DETAILED Q&A) -->
-      <section id="suallar" class="section">
-        <div class="container" style="max-width: 780px;">
-          <div style="text-align: center; margin-bottom: 36px;">
-            <p class="kicker">Tez-tez Verilən Suallar</p>
-            <h2 class="section-title">Suallar və Cavablar</h2>
-          </div>
-
-          <div id="faq-list">
-            <div class="faq-item is-open">
-              <button type="button" class="faq-btn" aria-expanded="true">
-                <span>Wolt-da iş necə olur?</span>
-                <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-              </button>
-              <div class="faq-answer">Wolt tətbiqi ilə restorandan sifarişi götürüb müştəriyə çatdırırsan, iş saatı sərbəstdir.</div>
-            </div>
-
-            <div class="faq-item">
-              <button type="button" class="faq-btn" aria-expanded="false">
-                <span>Neçə yaşdan işləmək olar?</span>
-                <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-              </button>
-              <div class="faq-answer">18 yaşdan yuxarı. 16-18 yaş arası valideyn icazə kağızı ilə mümkündür.</div>
-            </div>
-
-            <div class="faq-item">
-              <button type="button" class="faq-btn" aria-expanded="false">
-                <span>Qazanc necə hesablanır?</span>
-                <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-              </button>
-              <div class="faq-answer">Gündəlik 40 AZN-ə qədər 75% sənin, 25% şirkətin. 40 AZN-dən çox olduqda 80% sənin, 20% şirkətin. 15 günlük qazanc 80% sənin.</div>
-            </div>
-
-            <div class="faq-item">
-              <button type="button" class="faq-btn" aria-expanded="false">
-                <span>Hansı sənədlər lazımdır?</span>
-                <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-              </button>
-              <div class="faq-answer">Şəxsiyyət vəsiqəsi ön/arxa, selfie, aktiv telefon, aktiv Gmail, M10 nömrəsi, Wolt-da əvvəllər qeydiyyatdan keçməmiş olmaq.</div>
-            </div>
-
-            <div class="faq-item">
-              <button type="button" class="faq-btn" aria-expanded="false">
-                <span>Depozit nədir?</span>
-                <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-              </button>
-              <div class="faq-answer">Hesab aktiv olduqda -40 AZN depozit yaranır, qazancdan hissə-hissə tutulur. İçində 1 ədəd Wolt termo çantası var. Geyim hazırda verilmir. Çantanı qaytarsan 32 AZN geri alırsan.</div>
-            </div>
-
-            <div class="faq-item">
-              <button type="button" class="faq-btn" aria-expanded="false">
-                <span>Əvvəllər Wolt-da işləmişəm, yenidən qoşula bilərəm?</span>
-                <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-              </button>
-              <div class="faq-answer">Bəli, WhatsApp nömrələrimizə yaz, kömək edək.</div>
-            </div>
-
-            <div class="faq-item">
-              <button type="button" class="faq-btn" aria-expanded="false">
-                <span>Ofis haradadır?</span>
-                <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-              </button>
-              <div class="faq-answer">Məmməd Araz 25A, English Yard.</div>
-            </div>
-
-            <div class="faq-item">
-              <button type="button" class="faq-btn" aria-expanded="false">
-                <span>Nə vaxt başlaya bilərəm?</span>
-                <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-              </button>
-              <div class="faq-answer">Sənədlərini göndər, qeydiyyatdan keç, hesabın aktivləşən kimi başlaya bilərsən.</div>
-            </div>
           </div>
         </div>
       </section>
@@ -2446,21 +2525,20 @@
       </div>
     </nav>
 
-    <!-- FLOATING WHATSAPP BUTTON -->
+    <!-- FLOATING WHATSAPP BUTTON (OPENS NUMBER CHOOSER MODAL) -->
     <div class="floating-wa-wrap">
       <div class="floating-wa-tooltip" role="tooltip">WhatsApp-da Yaz</div>
       <span class="floating-wa-ping" aria-hidden="true"></span>
-      <a
-        href="https://wa.me/994998007565?text=Salam%2C%20FLASHLY%20sayt%C4%B1ndan%20yaz%C4%B1ram%2C%20Wolt%20qeydiyyat%C4%B1%20haqq%C4%B1nda%20m%C9%99lumat%20ist%C9%99yir%C9%99m"
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        type="button"
         aria-label="WhatsApp-da Yaz"
-        class="floating-wa-btn"
+        class="floating-wa-btn js-open-wa-chooser"
+        style="border: none;"
       >
         <svg width="32" height="32" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
           <path d="M16.004 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.348.613 4.642 1.778 6.663L2.667 29.333l6.835-1.792A13.28 13.28 0 0 0 16.004 29.333c7.363 0 13.333-5.973 13.333-13.333S23.367 2.667 16.004 2.667zm7.768 18.88c-.326.917-1.91 1.753-2.646 1.863-.672.1-1.524.142-2.46-.156-.567-.181-1.294-.421-2.228-.824-3.92-1.693-6.48-5.641-6.676-5.902-.195-.261-1.594-2.12-1.594-4.045 0-1.925 1.008-2.87 1.366-3.261.358-.391.782-.489 1.042-.489.261 0 .521.002.749.014.24.012.562-.091.879.671.326.782 1.108 2.704 1.205 2.9.098.195.163.423.033.684-.13.261-.195.423-.391.651-.195.228-.412.51-.587.684-.195.195-.398.407-.171.798.228.391 1.013 1.671 2.176 2.707 1.495 1.333 2.755 1.747 3.146 1.942.391.195.619.163.847-.098.228-.261.977-1.14 1.238-1.531.261-.391.521-.326.879-.195.358.13 2.279 1.075 2.67 1.27.391.195.651.293.749.456.098.163.098.944-.228 1.861z"/>
         </svg>
-      </a>
+      </button>
     </div>
 
     <!-- REGISTRATION POPUP MODAL -->
@@ -2567,6 +2645,174 @@
             Bağla
           </button>
         </div>
+      </div>
+    </div>
+
+    <!-- MAP APP CHOOSER MODAL -->
+    <div id="map-chooser-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="map-chooser-title">
+      <div class="modal-card" style="max-width: 480px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px;">
+          <h2 id="map-chooser-title" class="font-serif" style="font-size: 24px; font-weight: 700; color: var(--text-gold);">
+            Hansı tətbiqlə açmaq istəyirsən?
+          </h2>
+          <button type="button" id="map-chooser-close-x" aria-label="Bağla" style="width: 36px; height: 36px; border-radius: 10px; background: var(--bg-elevated); border: 1px solid var(--border-gold); color: var(--text-gold); font-size: 16px; font-weight: 700; flex-shrink: 0;">
+            ✕
+          </button>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Media+FM+Digital+Media+MMC+M%C9%99mm%C9%99d+Araz+25A+Bak%C4%B1"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="chooser-option js-map-option"
+          >
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <span class="chooser-badge" style="background: #FFFFFF;">
+                <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#EA4335"/>
+                  <path d="M12 2c-3.87 0-7 3.13-7 7 0 1.63.56 3.13 1.49 4.32L12 6.5V2z" fill="#4285F4"/>
+                  <path d="M12 6.5 6.49 13.32C8.17 15.46 10.67 19.3 12 22V6.5z" fill="#34A853"/>
+                  <circle cx="12" cy="9" r="2.8" fill="#FFFFFF"/>
+                </svg>
+              </span>
+              <div>
+                <div style="font-size: 16px; font-weight: 800;">Google Maps</div>
+                <div style="font-size: 12px; color: var(--text-muted);">Xəritə və marşrut</div>
+              </div>
+            </div>
+            <span style="color: var(--text-gold); font-weight: 800;">→</span>
+          </a>
+
+          <a
+            href="https://waze.com/ul?q=Media%20FM%20M%C9%99mm%C9%99d%20Araz%2025A%20Bak%C4%B1"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="chooser-option js-map-option"
+          >
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <span class="chooser-badge" style="background: #33CCFF;">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 3C7.5 3 4 6.2 4 10.2c0 2.5 1.3 4.7 3.3 6-.3 1-.9 1.9-1.7 2.4-.3.2-.2.7.2.7 1.4 0 2.8-.4 3.9-1.1.7.2 1.5.3 2.3.3 4.5 0 8-3.2 8-7.3S16.5 3 12 3z" fill="#FFFFFF" stroke="#0A1A3A" stroke-width="1.5"/>
+                  <circle cx="9.8" cy="10" r="1.1" fill="#0A1A3A"/>
+                  <circle cx="14.2" cy="10" r="1.1" fill="#0A1A3A"/>
+                  <path d="M9.5 12.8c.7.9 1.6 1.3 2.5 1.3s1.8-.4 2.5-1.3" stroke="#0A1A3A" stroke-width="1.4" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <div>
+                <div style="font-size: 16px; font-weight: 800;">Waze</div>
+                <div style="font-size: 12px; color: var(--text-muted);">Canlı yol və tıxac</div>
+              </div>
+            </div>
+            <span style="color: var(--text-gold); font-weight: 800;">→</span>
+          </a>
+
+          <a
+            href="https://maps.apple.com/?q=Media+FM+M%C9%99mm%C9%99d+Araz+25A+Bak%C4%B1"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="chooser-option js-map-option"
+          >
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <span class="chooser-badge" style="background: linear-gradient(135deg, #4CD964 0%, #007AFF 100%);">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" fill="#FFFFFF" fill-opacity="0.2" stroke="#FFFFFF" stroke-width="1.8"/>
+                  <polygon points="12 5 16 17 12 14.5 8 17 12 5" fill="#FFFFFF"/>
+                </svg>
+              </span>
+              <div>
+                <div style="font-size: 16px; font-weight: 800;">Apple Maps</div>
+                <div style="font-size: 12px; color: var(--text-muted);">iPhone xəritəsi</div>
+              </div>
+            </div>
+            <span style="color: var(--text-gold); font-weight: 800;">→</span>
+          </a>
+
+          <a
+            href="https://yandex.com/maps/?text=Media+FM+M%C9%99mm%C9%99d+Araz+25A+Bak%C4%B1"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="chooser-option js-map-option"
+          >
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <span class="chooser-badge" style="background: #FFCC00;">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 2C7.86 2 4.5 5.36 4.5 9.5c0 4.97 6.55 11.4 7.5 12.3.95-.9 7.5-7.33 7.5-12.3C19.5 5.36 16.14 2 12 2z" fill="#FC3F1D"/>
+                  <circle cx="12" cy="9.5" r="3" fill="#FFFFFF"/>
+                </svg>
+              </span>
+              <div>
+                <div style="font-size: 16px; font-weight: 800;">Yandex Maps</div>
+                <div style="font-size: 12px; color: var(--text-muted);">Ünvan üzrə naviqasiya</div>
+              </div>
+            </div>
+            <span style="color: var(--text-gold); font-weight: 800;">→</span>
+          </a>
+        </div>
+
+        <button type="button" id="map-chooser-close-btn" class="btn-navy-gold" style="width: 100%; margin-top: 16px; min-height: 46px; font-size: 14px; background: var(--bg-elevated); color: var(--text-main);">
+          Bağla
+        </button>
+      </div>
+    </div>
+
+    <!-- WHATSAPP NUMBER CHOOSER MODAL -->
+    <div id="wa-chooser-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="wa-chooser-title">
+      <div class="modal-card" style="max-width: 460px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px;">
+          <h2 id="wa-chooser-title" class="font-serif" style="font-size: 24px; font-weight: 700; color: var(--text-gold);">
+            Hansı nömrə ilə yazmaq istəyirsən?
+          </h2>
+          <button type="button" id="wa-chooser-close-x" aria-label="Bağla" style="width: 36px; height: 36px; border-radius: 10px; background: var(--bg-elevated); border: 1px solid var(--border-gold); color: var(--text-gold); font-size: 16px; font-weight: 700; flex-shrink: 0;">
+            ✕
+          </button>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <a
+            href="https://wa.me/994998007565"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="chooser-option js-wa-option"
+          >
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <span class="chooser-badge" style="background: #25D366; color: #FFFFFF; border-radius: 999px;">
+                <svg width="26" height="26" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+                  <path d="M16.004 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.348.613 4.642 1.778 6.663L2.667 29.333l6.835-1.792A13.28 13.28 0 0 0 16.004 29.333c7.363 0 13.333-5.973 13.333-13.333S23.367 2.667 16.004 2.667zm7.768 18.88c-.326.917-1.91 1.753-2.646 1.863-.672.1-1.524.142-2.46-.156-.567-.181-1.294-.421-2.228-.824-3.92-1.693-6.48-5.641-6.676-5.902-.195-.261-1.594-2.12-1.594-4.045 0-1.925 1.008-2.87 1.366-3.261.358-.391.782-.489 1.042-.489.261 0 .521.002.749.014.24.012.562-.091.879.671.326.782 1.108 2.704 1.205 2.9.098.195.163.423.033.684-.13.261-.195.423-.391.651-.195.228-.412.51-.587.684-.195.195-.398.407-.171.798.228.391 1.013 1.671 2.176 2.707 1.495 1.333 2.755 1.747 3.146 1.942.391.195.619.163.847-.098.228-.261.977-1.14 1.238-1.531.261-.391.521-.326.879-.195.358.13 2.279 1.075 2.67 1.27.391.195.651.293.749.456.098.163.098.944-.228 1.861z"/>
+                </svg>
+              </span>
+              <div>
+                <div class="font-mono" style="font-size: 17px; font-weight: 800;">+994 99 800 75 65</div>
+                <div style="font-size: 12px; color: var(--text-muted);">WhatsApp ilə yaz</div>
+              </div>
+            </div>
+            <span style="color: var(--text-gold); font-weight: 800;">→</span>
+          </a>
+
+          <a
+            href="https://wa.me/994604466404"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="chooser-option js-wa-option"
+          >
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <span class="chooser-badge" style="background: #25D366; color: #FFFFFF; border-radius: 999px;">
+                <svg width="26" height="26" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+                  <path d="M16.004 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.348.613 4.642 1.778 6.663L2.667 29.333l6.835-1.792A13.28 13.28 0 0 0 16.004 29.333c7.363 0 13.333-5.973 13.333-13.333S23.367 2.667 16.004 2.667zm7.768 18.88c-.326.917-1.91 1.753-2.646 1.863-.672.1-1.524.142-2.46-.156-.567-.181-1.294-.421-2.228-.824-3.92-1.693-6.48-5.641-6.676-5.902-.195-.261-1.594-2.12-1.594-4.045 0-1.925 1.008-2.87 1.366-3.261.358-.391.782-.489 1.042-.489.261 0 .521.002.749.014.24.012.562-.091.879.671.326.782 1.108 2.704 1.205 2.9.098.195.163.423.033.684-.13.261-.195.423-.391.651-.195.228-.412.51-.587.684-.195.195-.398.407-.171.798.228.391 1.013 1.671 2.176 2.707 1.495 1.333 2.755 1.747 3.146 1.942.391.195.619.163.847-.098.228-.261.977-1.14 1.238-1.531.261-.391.521-.326.879-.195.358.13 2.279 1.075 2.67 1.27.391.195.651.293.749.456.098.163.098.944-.228 1.861z"/>
+                </svg>
+              </span>
+              <div>
+                <div class="font-mono" style="font-size: 17px; font-weight: 800;">+994 60 446 64 04</div>
+                <div style="font-size: 12px; color: var(--text-muted);">WhatsApp ilə yaz</div>
+              </div>
+            </div>
+            <span style="color: var(--text-gold); font-weight: 800;">→</span>
+          </a>
+        </div>
+
+        <button type="button" id="wa-chooser-close-btn" class="btn-navy-gold" style="width: 100%; margin-top: 16px; min-height: 46px; font-size: 14px; background: var(--bg-elevated); color: var(--text-main);">
+          Bağla
+        </button>
       </div>
     </div>
 
@@ -2845,103 +3091,78 @@
           });
         }
 
-        var audioToggleBtn = document.getElementById('audio-toggle-btn');
-        var audioPlayIcon = document.getElementById('audio-icon-play');
-        var audioPauseIcon = document.getElementById('audio-icon-pause');
-        var audioTimeLabel = document.getElementById('audio-time-label');
-        var audioProgressFill = document.getElementById('audio-progress-fill');
-        var audioCaptionText = document.getElementById('audio-caption-text');
-        var audioScrubBar = document.getElementById('audio-scrub-bar');
-
-        var GUIDE_SEGMENTS = [
-          { start: 0, end: 7, text: '1. Şəxsiyyət vəsiqənizi əlinizdə tutun və üzünüzün kameraya aydın düşdüyünə əmin olun.' },
-          { start: 7, end: 15, text: '2. Vəsiqə üzərindəki ad, soyad və məlumatlar oxunaqlı şəkildə görünməlidir.' },
-          { start: 15, end: 26, text: '3. Yuxarıdakı rəsmi təsdiq mətnini aydın Azərbaycan dilində səsləndirib videonu göndərin.' },
-        ];
-        var AUDIO_DURATION = 26;
-        var audioElapsed = 0;
-        var audioPlaying = false;
-        var audioTimer = null;
-
-        function renderAudioUI() {
-          var mm = String(Math.floor(audioElapsed / 60)).padStart(2, '0');
-          var ss = String(audioElapsed % 60).padStart(2, '0');
-          if (audioTimeLabel) audioTimeLabel.textContent = mm + ':' + ss + ' / 00:26';
-          if (audioProgressFill) audioProgressFill.style.width = Math.min(100, (audioElapsed / AUDIO_DURATION) * 100) + '%';
-          if (audioPlayIcon) audioPlayIcon.style.display = audioPlaying ? 'none' : 'block';
-          if (audioPauseIcon) audioPauseIcon.style.display = audioPlaying ? 'block' : 'none';
-          var seg = GUIDE_SEGMENTS.find(function (s) { return audioElapsed >= s.start && audioElapsed < s.end; }) || GUIDE_SEGMENTS[0];
-          if (audioCaptionText) audioCaptionText.textContent = seg.text;
-        }
-
-        function stopAudio() {
-          audioPlaying = false;
-          if (audioTimer) {
-            window.clearInterval(audioTimer);
-            audioTimer = null;
-          }
-          if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-          renderAudioUI();
-        }
-
-        if (audioToggleBtn) {
-          audioToggleBtn.addEventListener('click', function () {
-            if (audioPlaying) {
-              stopAudio();
-              return;
-            }
-            if (audioElapsed >= AUDIO_DURATION) audioElapsed = 0;
-            audioPlaying = true;
-
-            if ('speechSynthesis' in window) {
-              var voices = window.speechSynthesis.getVoices();
-              var azVoice = voices.find(function (v) { return v.lang.toLowerCase().indexOf('az') === 0; });
-              if (azVoice) {
-                var u = new SpeechSynthesisUtterance(GUIDE_SEGMENTS.map(function (s) { return s.text; }).join(' '));
-                u.voice = azVoice;
-                u.lang = azVoice.lang;
-                u.rate = 0.95;
-                window.speechSynthesis.speak(u);
-              }
-            }
-
-            renderAudioUI();
-            audioTimer = window.setInterval(function () {
-              audioElapsed += 1;
-              if (audioElapsed >= AUDIO_DURATION) {
-                audioElapsed = AUDIO_DURATION;
-                stopAudio();
-              } else {
-                renderAudioUI();
-              }
-            }, 1000);
-          });
-        }
-
-        if (audioScrubBar) {
-          audioScrubBar.addEventListener('click', function (e) {
-            var rect = audioScrubBar.getBoundingClientRect();
-            var ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-            audioElapsed = Math.round(ratio * AUDIO_DURATION);
-            renderAudioUI();
-          });
-        }
-
-        // 9. MAP SETUP FROM TOP CONFIG
-        var encodedMapQ = encodeURIComponent(MAP_SEARCH_QUERY);
+        // 9. ADDRESS SETUP & MAP / WHATSAPP CHOOSER MODALS
         var officeAddrEl = document.getElementById('office-address-text');
-        var mapOpenEl = document.getElementById('map-open-link');
-        var mapDirEl = document.getElementById('map-directions-link');
-        var mapIframeEl = document.getElementById('office-map-iframe');
         var copyAddrBtn = document.getElementById('copy-address-btn');
 
         if (officeAddrEl) officeAddrEl.textContent = OFFICE_ADDRESS;
-        if (mapOpenEl) mapOpenEl.href = 'https://www.google.com/maps/search/?api=1&query=' + encodedMapQ;
-        if (mapDirEl) mapDirEl.href = 'https://www.google.com/maps/dir/?api=1&destination=' + encodedMapQ;
-        if (mapIframeEl) mapIframeEl.src = 'https://maps.google.com/maps?q=' + encodedMapQ + '&t=&z=' + MAP_ZOOM_LEVEL + '&ie=UTF8&iwloc=&output=embed';
         if (copyAddrBtn) {
           copyAddrBtn.addEventListener('click', function () {
             copyText(OFFICE_ADDRESS, copyAddrBtn, 'Ünvanı Kopyala', 'Ünvan kopyalandı ✓');
+          });
+        }
+
+        var mapChooserModal = document.getElementById('map-chooser-modal');
+        var mapCloseX = document.getElementById('map-chooser-close-x');
+        var mapCloseBtn = document.getElementById('map-chooser-close-btn');
+
+        function openMapChooser() {
+          if (!mapChooserModal) return;
+          mapChooserModal.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeMapChooser() {
+          if (!mapChooserModal) return;
+          mapChooserModal.classList.remove('is-open');
+          document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('.js-open-map-chooser').forEach(function (btn) {
+          btn.addEventListener('click', openMapChooser);
+        });
+        if (mapCloseX) mapCloseX.addEventListener('click', closeMapChooser);
+        if (mapCloseBtn) mapCloseBtn.addEventListener('click', closeMapChooser);
+        document.querySelectorAll('.js-map-option').forEach(function (link) {
+          link.addEventListener('click', function () {
+            window.setTimeout(closeMapChooser, 150);
+          });
+        });
+        if (mapChooserModal) {
+          mapChooserModal.addEventListener('click', function (e) {
+            if (e.target === mapChooserModal) closeMapChooser();
+          });
+        }
+
+        var waChooserModal = document.getElementById('wa-chooser-modal');
+        var waCloseX = document.getElementById('wa-chooser-close-x');
+        var waCloseBtn = document.getElementById('wa-chooser-close-btn');
+
+        function openWaChooser() {
+          if (!waChooserModal) return;
+          waChooserModal.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeWaChooser() {
+          if (!waChooserModal) return;
+          waChooserModal.classList.remove('is-open');
+          document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('.js-open-wa-chooser').forEach(function (btn) {
+          btn.addEventListener('click', openWaChooser);
+        });
+        if (waCloseX) waCloseX.addEventListener('click', closeWaChooser);
+        if (waCloseBtn) waCloseBtn.addEventListener('click', closeWaChooser);
+        document.querySelectorAll('.js-wa-option').forEach(function (link) {
+          link.addEventListener('click', function () {
+            window.setTimeout(closeWaChooser, 150);
+          });
+        });
+        if (waChooserModal) {
+          waChooserModal.addEventListener('click', function (e) {
+            if (e.target === waChooserModal) closeWaChooser();
           });
         }
 
@@ -2955,11 +3176,15 @@
             faqItems.forEach(function (other) {
               other.classList.remove('is-open');
               var b = other.querySelector('.faq-btn');
+              var pm = other.querySelector('.faq-pm');
               if (b) b.setAttribute('aria-expanded', 'false');
+              if (pm) pm.textContent = '+';
             });
             if (!wasOpen) {
               item.classList.add('is-open');
               btn.setAttribute('aria-expanded', 'true');
+              var pmCurrent = item.querySelector('.faq-pm');
+              if (pmCurrent) pmCurrent.textContent = '−';
             }
           });
         });
@@ -3046,6 +3271,8 @@
           if (e.key === 'Escape') {
             closeRegModal();
             closeIgPopup();
+            closeMapChooser();
+            closeWaChooser();
           }
         });
       })();
