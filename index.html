@@ -298,6 +298,66 @@
         transform: scale(1.06);
       }
 
+      /* TOP RENTAL FLASHING BANNER */
+      .top-rental-banner {
+        position: relative;
+        z-index: 35;
+        background: linear-gradient(90deg, #C9A227 0%, #E8C766 50%, #D4AF37 100%);
+        color: #0A1A3A;
+        padding: 9px 42px 9px 14px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: 800;
+        line-height: 1.3;
+        cursor: pointer;
+        border-bottom: 1px solid rgba(10, 26, 58, 0.25);
+        animation: rentalBannerPulse 2.4s ease-in-out infinite;
+        transition: filter 0.16s ease;
+      }
+
+      .top-rental-banner:hover {
+        filter: brightness(1.05);
+      }
+
+      .top-rental-banner-text {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        max-width: 960px;
+        margin: 0 auto;
+      }
+
+      @media (max-width: 639px) {
+        .top-rental-banner {
+          font-size: 12px;
+          padding: 8px 36px 8px 10px;
+        }
+      }
+
+      .top-rental-close {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 24px;
+        height: 24px;
+        border-radius: 999px;
+        border: 1px solid rgba(10, 26, 58, 0.35);
+        background: rgba(10, 26, 58, 0.12);
+        color: #0A1A3A;
+        font-size: 12px;
+        font-weight: 800;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+      }
+
+      .top-rental-close:hover {
+        background: rgba(10, 26, 58, 0.24);
+      }
+
       /* TOP ANNOUNCEMENT & HEADER */
       .announcement-bar {
         background: #07142C;
@@ -325,33 +385,50 @@
       }
 
       .header-inner {
-        height: 66px;
+        min-height: 62px;
+        padding: 8px 0;
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
-        gap: 24px;
+        gap: 10px 16px;
+      }
+
+      @media (min-width: 768px) {
+        .header-inner {
+          height: 66px;
+          padding: 0;
+          flex-wrap: nowrap;
+          gap: 20px;
+        }
       }
 
       .brand-link {
         display: inline-flex;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
         flex-shrink: 0;
       }
 
       .brand-wordmark {
         font-family: "Cormorant Garamond", "Noto Serif", Georgia, serif;
-        font-size: 22px;
+        font-size: 20px;
         font-weight: 700;
         letter-spacing: 0.08em;
         color: var(--text-gold);
         white-space: nowrap;
       }
 
+      @media (min-width: 640px) {
+        .brand-wordmark {
+          font-size: 22px;
+        }
+      }
+
       .nav-links {
         display: none;
         align-items: center;
-        gap: 24px;
+        gap: 22px;
         font-size: 14px;
         font-weight: 600;
         color: var(--text-muted);
@@ -366,7 +443,7 @@
         color: var(--text-gold);
       }
 
-      @media (min-width: 768px) {
+      @media (min-width: 900px) {
         .nav-links {
           display: flex;
         }
@@ -375,13 +452,42 @@
       .header-actions {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
         flex-shrink: 0;
+        flex-wrap: wrap;
+      }
+
+      .header-rental-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 6px 11px;
+        border-radius: 999px;
+        background: #0A1A3A;
+        border: 1px solid #D4AF37;
+        color: #E8C766;
+        font-size: 11.5px;
+        font-weight: 700;
+        white-space: nowrap;
+        transition: background-color 0.15s ease, transform 0.15s ease;
+      }
+
+      .header-rental-pill:hover {
+        background: #122B59;
+        transform: translateY(-1px);
+      }
+
+      @media (min-width: 640px) {
+        .header-rental-pill {
+          padding: 7px 14px;
+          font-size: 12.5px;
+          gap: 6px;
+        }
       }
 
       .theme-btn {
-        width: 40px;
-        height: 40px;
+        width: 36px;
+        height: 36px;
         border-radius: 10px;
         background: var(--bg-elevated);
         border: 1px solid var(--border-gold);
@@ -392,15 +498,30 @@
         transition: transform 0.15s ease;
       }
 
+      @media (min-width: 640px) {
+        .theme-btn {
+          width: 40px;
+          height: 40px;
+        }
+      }
+
       .theme-btn:hover {
         transform: scale(1.04);
       }
 
       .header-cta {
-        min-height: 40px;
-        padding: 8px 16px;
-        font-size: 13px;
+        min-height: 36px;
+        padding: 7px 13px;
+        font-size: 12px;
         border-radius: 10px;
+      }
+
+      @media (min-width: 640px) {
+        .header-cta {
+          min-height: 40px;
+          padding: 8px 16px;
+          font-size: 13px;
+        }
       }
 
       /* HERO SECTION */
@@ -1286,44 +1407,53 @@
         white-space: nowrap;
       }
 
-      /* MODALS */
+      /* MODALS (CENTERED ON MOBILE & DESKTOP) */
       .modal-backdrop {
         position: fixed;
         inset: 0;
         z-index: 60;
-        display: none;
-        align-items: flex-end;
+        display: flex;
+        align-items: center;
         justify-content: center;
         background: rgba(4, 11, 26, 0.78);
-        backdrop-filter: blur(4px);
-        padding: 0;
-      }
-
-      @media (min-width: 640px) {
-        .modal-backdrop {
-          align-items: center;
-          padding: 16px;
-        }
+        backdrop-filter: blur(6px);
+        padding: 16px;
+        overflow-y: auto;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 200ms ease, visibility 200ms ease;
       }
 
       .modal-backdrop.is-open {
-        display: flex;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
       }
 
       .modal-card {
         width: 100%;
-        max-width: 500px;
+        max-width: 420px;
+        margin: auto;
         background: var(--bg-card);
         color: var(--text-main);
         border: 1px solid var(--border-gold-strong);
-        border-radius: 20px 20px 0 0;
+        border-radius: 24px;
         padding: 24px;
         box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+        transform: scale(0.92);
+        opacity: 0;
+        transition: transform 200ms ease, opacity 200ms ease;
+      }
+
+      .modal-backdrop.is-open .modal-card {
+        transform: scale(1);
+        opacity: 1;
       }
 
       @media (min-width: 640px) {
         .modal-card {
-          border-radius: 20px;
+          max-width: 480px;
           padding: 30px;
         }
       }
@@ -1355,6 +1485,231 @@
         justify-content: center;
         flex-shrink: 0;
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+      }
+
+      /* RENTAL TRANSPORT SECTION (İCARƏ NƏQLİYYAT) */
+      .rental-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 24px;
+      }
+
+      .rental-img-frame {
+        position: relative;
+        height: 230px;
+        width: 100%;
+        background: #F4F5F7;
+        border-radius: 14px;
+        border: 1px solid var(--border-gold);
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        cursor: pointer;
+        transition: border-color 0.16s ease, transform 0.16s ease;
+      }
+
+      @media (min-width: 768px) {
+        .rental-img-frame {
+          height: 260px;
+        }
+      }
+
+      .rental-img-frame:hover {
+        border-color: #D4AF37;
+      }
+
+      .rental-img-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .rental-zoom-pill {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        padding: 5px 10px;
+        border-radius: 8px;
+        background: rgba(10, 26, 58, 0.86);
+        color: #E8C766;
+        border: 1px solid rgba(212, 175, 55, 0.5);
+        font-size: 11px;
+        font-weight: 700;
+        pointer-events: none;
+      }
+
+      .rental-thumbs-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 12px;
+        min-height: 50px;
+      }
+
+      .rental-thumb-btn {
+        width: 62px;
+        height: 48px;
+        padding: 4px;
+        border-radius: 10px;
+        background: #F4F5F7;
+        border: 2px solid rgba(212, 175, 55, 0.35);
+        overflow: hidden;
+        transition: border-color 0.15s ease, transform 0.15s ease;
+      }
+
+      .rental-thumb-btn img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .rental-thumb-btn.is-active {
+        border-color: #D4AF37;
+        box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.25);
+        transform: translateY(-1px);
+      }
+
+      .rental-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 5px 12px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.03em;
+        white-space: nowrap;
+      }
+
+      .rental-badge-free {
+        background: rgba(34, 197, 94, 0.15);
+        color: #15803D;
+        border: 1px solid rgba(34, 197, 94, 0.4);
+      }
+
+      html.dark .rental-badge-free {
+        color: #4ADE80;
+        background: rgba(34, 197, 94, 0.18);
+      }
+
+      .rental-badge-dep {
+        background: rgba(212, 175, 55, 0.16);
+        color: #8A690E;
+        border: 1px solid rgba(212, 175, 55, 0.5);
+      }
+
+      html.dark .rental-badge-dep {
+        color: #E8C766;
+      }
+
+      .rental-price-tag {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 22px;
+        font-weight: 800;
+        color: var(--text-gold);
+        margin-top: 12px;
+      }
+
+      .rental-features {
+        margin: 16px 0 22px;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+
+      .rental-features li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text-muted);
+      }
+
+      .btn-wa-green {
+        background: #25D366;
+        color: #FFFFFF;
+        font-weight: 800;
+        border: none;
+        border-radius: 12px;
+        min-height: 48px;
+        padding: 12px 18px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-size: 15px;
+        white-space: nowrap;
+        box-shadow: 0 8px 20px rgba(37, 211, 102, 0.28);
+        transition: filter 0.16s ease, transform 0.16s ease;
+      }
+
+      .btn-wa-green:hover {
+        filter: brightness(1.06);
+        transform: translateY(-1px);
+      }
+
+      .rental-btn-row {
+        margin-top: auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      @media (min-width: 480px) {
+        .rental-btn-row {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .rental-specs-wrap {
+        margin-top: 14px;
+        padding: 12px;
+        border-radius: 12px;
+        background: var(--bg-elevated);
+        border: 1px solid rgba(212, 175, 55, 0.25);
+      }
+
+      .rental-specs-title {
+        font-size: 12px;
+        font-weight: 800;
+        color: var(--text-gold);
+        letter-spacing: 0.03em;
+        margin-bottom: 8px;
+      }
+
+      .rental-specs-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px 10px;
+      }
+
+      .rental-spec-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 6px;
+        font-size: 11.5px;
+        line-height: 1.35;
+        color: var(--text-muted);
+      }
+
+      .rental-spec-item.is-wide {
+        grid-column: 1 / -1;
+      }
+
+      .rental-spec-item svg {
+        flex-shrink: 0;
+        margin-top: 1px;
+        color: var(--text-gold);
+      }
+
+      .rental-spec-item strong {
+        color: var(--text-main);
+        font-weight: 700;
       }
 
       /* FOOTER */
@@ -1389,13 +1744,24 @@
         50% { opacity: 1; transform: scale(1.04); }
       }
 
+      @keyframes rentalBannerPulse {
+        0%, 100% {
+          box-shadow: inset 0 0 0 rgba(255, 255, 255, 0), 0 2px 10px rgba(212, 175, 55, 0.25);
+          filter: brightness(1);
+        }
+        50% {
+          box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.42), 0 4px 18px rgba(232, 199, 102, 0.55);
+          filter: brightness(1.09);
+        }
+      }
+
       @keyframes waPing {
         0% { transform: scale(1); opacity: 0.7; }
         75%, 100% { transform: scale(1.45); opacity: 0; }
       }
 
       @media (prefers-reduced-motion: reduce) {
-        .loading-glow, .hero-emblem-glow, .floating-wa-ping {
+        .loading-glow, .hero-emblem-glow, .floating-wa-ping, .top-rental-banner {
           animation: none !important;
         }
       }
@@ -1424,6 +1790,21 @@
       </p>
     </div>
 
+    <!-- TOP FLASHING RENTAL BANNER -->
+    <div id="top-rental-banner" class="top-rental-banner" role="button" tabindex="0" aria-label="İcarə Nəqliyyat bölməsinə keç">
+      <div class="top-rental-banner-text">
+        İcarə Nəqliyyat Lazımdır? Skuter 10 AZN / Velosiped 4 AZN - Klik Et
+      </div>
+      <button
+        type="button"
+        id="top-rental-close"
+        class="top-rental-close"
+        aria-label="Banneri bağla"
+      >
+        ✕
+      </button>
+    </div>
+
     <!-- TOP ANNOUNCEMENT BAR -->
     <div class="announcement-bar">
       Qeydiyyat 30 NOYABR-dək ÖDƏNİŞSİZDİR — Kampanyadan yararlanın!
@@ -1438,7 +1819,7 @@
           class="brand-link"
           aria-label="FLASHLY yuxarı qayıt"
         >
-          <div class="logo-coin" style="width: 40px; height: 40px;">
+          <div class="logo-coin" style="width: 38px; height: 38px;">
             <img
               src="assets/aistudio/image_20261119_094022_11548edc.jpg"
               alt="FLASHLY rəsmi loqo"
@@ -1455,6 +1836,20 @@
         </nav>
 
         <div class="header-actions">
+          <button
+            type="button"
+            class="header-rental-pill js-scroll-rental"
+            aria-label="İcarə Haqqında bölməsinə keç"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="5.5" cy="17.5" r="2.5"></circle>
+              <circle cx="18.5" cy="17.5" r="2.5"></circle>
+              <path d="M15 6h2l2 6.5"></path>
+              <path d="M5.5 17.5H15l2.5-6H9.5"></path>
+            </svg>
+            <span>İcarə Haqqında</span>
+          </button>
+
           <button
             type="button"
             id="theme-toggle-btn"
@@ -1943,6 +2338,278 @@
                 style="width: 100%; height: 100%; object-fit: cover;"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7B. İCARƏ NƏQLİYYAT -->
+      <section id="icare" class="section">
+        <div class="container">
+          <div style="text-align: center; max-width: 680px; margin: 0 auto 40px;">
+            <p class="kicker">Nəqliyyat Dəstəyi</p>
+            <h2 class="section-title">İcarə Nəqliyyat</h2>
+            <p class="section-desc" style="margin: 12px auto 0;">
+              Öz nəqliyyatınız yoxdursa, Wolt çatdırılmaları üçün hazır skuter və ya velosipedlərimizi sərfəli günlük şərtlərlə icarəyə götürə bilərsiniz.
+            </p>
+          </div>
+
+          <div class="grid-2" style="max-width: 980px; margin: 0 auto;">
+            <!-- CARD 1: SKUTER -->
+            <article class="lux-card rental-card">
+              <div
+                class="rental-img-frame js-open-rental-modal"
+                data-rental="skuter"
+                role="button"
+                tabindex="0"
+                aria-label="Xiaomi X9 Pro Skuter ətraflı bax"
+              >
+                <img
+                  id="skuter-main-img"
+                  src="assets/aistudio/WhatsApp_Image_2026-11-21_at_00.31.50_d08e6a4c.jpeg"
+                  alt="Xiaomi X9 Pro Skuter"
+                />
+                <span class="rental-zoom-pill">Ətraflı bax</span>
+              </div>
+
+              <div class="rental-thumbs-row" aria-label="Skuter şəkilləri">
+                <button
+                  type="button"
+                  class="rental-thumb-btn js-skuter-thumb is-active"
+                  data-src="assets/aistudio/WhatsApp_Image_2026-11-21_at_00.31.50_d08e6a4c.jpeg"
+                  aria-label="Xiaomi X9 Pro Skuter ön görünüş"
+                >
+                  <img src="assets/aistudio/WhatsApp_Image_2026-11-21_at_00.31.50_d08e6a4c.jpeg" alt="Skuter ön görünüş" />
+                </button>
+                <button
+                  type="button"
+                  class="rental-thumb-btn js-skuter-thumb"
+                  data-src="assets/aistudio/WhatsApp_Image_2026-11-21_at_00.31.50__2__17430c1f.jpeg"
+                  aria-label="Xiaomi X9 Pro Skuter yan görünüş"
+                >
+                  <img src="assets/aistudio/WhatsApp_Image_2026-11-21_at_00.31.50__2__17430c1f.jpeg" alt="Skuter yan görünüş" />
+                </button>
+              </div>
+
+              <div style="margin-top: 16px; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+                <div>
+                  <h3 style="font-size: 21px; font-weight: 800; line-height: 1.25;">Xiaomi X9 Pro Skuter</h3>
+                  <p style="margin-top: 4px; font-size: 13px; font-weight: 600; color: var(--text-muted);">İcarəyə verilir</p>
+                </div>
+                <span class="rental-badge rental-badge-free">DEPOZİTSİZ</span>
+              </div>
+
+              <div class="rental-price-tag">Gündəlik 10 AZN</div>
+
+              <div class="rental-specs-wrap">
+                <div class="rental-specs-title">Təyinat</div>
+                <div class="rental-specs-grid">
+                  <div class="rental-spec-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l4-4M12 3a9 9 0 109 9" />
+                    </svg>
+                    <span>Maksimal sürət: <strong>40-45 km/s-ə qədər</strong></span>
+                  </div>
+                  <div class="rental-spec-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" aria-hidden="true">
+                      <rect x="2" y="7" width="16" height="10" rx="2" />
+                      <path d="M22 11v2M6 12h6" />
+                    </svg>
+                    <span>Bir zaryadka ilə: <strong>40-65 km-ə qədər</strong></span>
+                  </div>
+                  <div class="rental-spec-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" aria-hidden="true">
+                      <circle cx="12" cy="12" r="9" />
+                      <path stroke-linecap="round" d="M12 7v5l3 2" />
+                    </svg>
+                    <span>Zaryadka vaxtı: <strong>3-7 saat</strong></span>
+                  </div>
+                  <div class="rental-spec-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 7h12l1.5 13h-15L6 7zM9 7a3 3 0 016 0" />
+                    </svg>
+                    <span>Maksimal yük: <strong>65-90 kq-a qədər</strong></span>
+                  </div>
+                  <div class="rental-spec-item is-wide">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" aria-hidden="true">
+                      <circle cx="12" cy="12" r="9" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    <span>Təkərlər: <strong>10 düym, yolsuzluq üçün uyğun</strong></span>
+                  </div>
+                </div>
+              </div>
+
+              <ul class="rental-features">
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  <span>Depozit yoxdur</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  <span>Gündəlik ödəniş</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  <span>Wolt üçün hazır</span>
+                </li>
+              </ul>
+
+              <div class="rental-btn-row">
+                <a
+                  href="https://wa.me/994505194419?text=Salam%2C%20icar%C9%99%20n%C9%99qliyyat%20haqq%C4%B1nda%20m%C9%99lumat%20almaq%20ist%C9%99yir%C9%99m"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-wa-green"
+                >
+                  <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+                    <path d="M16.004 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.348.613 4.642 1.778 6.663L2.667 29.333l6.835-1.792A13.28 13.28 0 0 0 16.004 29.333c7.363 0 13.333-5.973 13.333-13.333S23.367 2.667 16.004 2.667zm7.768 18.88c-.326.917-1.91 1.753-2.646 1.863-.672.1-1.524.142-2.46-.156-.567-.181-1.294-.421-2.228-.824-3.92-1.693-6.48-5.641-6.676-5.902-.195-.261-1.594-2.12-1.594-4.045 0-1.925 1.008-2.87 1.366-3.261.358-.391.782-.489 1.042-.489.261 0 .521.002.749.014.24.012.562-.091.879.671.326.782 1.108 2.704 1.205 2.9.098.195.163.423.033.684-.13.261-.195.423-.391.651-.195.228-.412.51-.587.684-.195.195-.398.407-.171.798.228.391 1.013 1.671 2.176 2.707 1.495 1.333 2.755 1.747 3.146 1.942.391.195.619.163.847-.098.228-.261.977-1.14 1.238-1.531.261-.391.521-.326.879-.195.358.13 2.279 1.075 2.67 1.27.391.195.651.293.749.456.098.163.098.944-.228 1.861z"/>
+                  </svg>
+                  WhatsApp-la Yaz
+                </a>
+                <a
+                  href="tel:+994505194419"
+                  class="btn-navy-gold"
+                  style="min-height: 48px; padding: 12px 18px; font-size: 15px;"
+                >
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+                  </svg>
+                  Zəng Et
+                </a>
+              </div>
+            </article>
+
+            <!-- CARD 2: VELOSİPED -->
+            <article class="lux-card rental-card">
+              <div
+                class="rental-img-frame js-open-rental-modal"
+                data-rental="velosiped"
+                role="button"
+                tabindex="0"
+                aria-label="29-luq Skorostnoy Velosiped ətraflı bax"
+              >
+                <img
+                  src="assets/aistudio/WhatsApp_Image_2026-11-21_at_00.31.50__1__df766228.jpeg"
+                  alt="29-luq Skorostnoy Velosiped"
+                />
+                <span class="rental-zoom-pill">Ətraflı bax</span>
+              </div>
+
+              <div class="rental-thumbs-row" aria-hidden="true">
+                <span style="font-size: 12px; font-weight: 600; color: var(--text-muted);">Böyük təkərli sürətli model</span>
+              </div>
+
+              <div style="margin-top: 16px; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+                <div>
+                  <h3 style="font-size: 21px; font-weight: 800; line-height: 1.25;">29-luq Skorostnoy Velosiped</h3>
+                  <p style="margin-top: 4px; font-size: 13px; font-weight: 600; color: var(--text-muted);">İcarəyə verilir</p>
+                </div>
+                <span class="rental-badge rental-badge-dep">Depozit 20 AZN</span>
+              </div>
+
+              <div class="rental-price-tag">Gündəlik 4 AZN</div>
+
+              <div class="rental-specs-wrap">
+                <div class="rental-specs-title">Təyinat</div>
+                <div class="rental-specs-grid">
+                  <div class="rental-spec-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" aria-hidden="true">
+                      <circle cx="12" cy="12" r="9" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    <span>Təkər ölçüsü: <strong>29 düym</strong></span>
+                  </div>
+                  <div class="rental-spec-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" aria-hidden="true">
+                      <circle cx="12" cy="12" r="3" />
+                      <path d="M12 2v3M12 19v3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M2 12h3M19 12h3" />
+                    </svg>
+                    <span>Sürət sayı: <strong>21 skorost</strong></span>
+                  </div>
+                  <div class="rental-spec-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" aria-hidden="true">
+                      <circle cx="12" cy="12" r="8" />
+                      <path stroke-linecap="round" d="M12 8v4l3 3" />
+                    </svg>
+                    <span>Əyləc: <strong>Disk əyləc</strong></span>
+                  </div>
+                  <div class="rental-spec-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l8 4v6c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V7l8-4z" />
+                    </svg>
+                    <span>Çərçivə: <strong>Yüngül, dözümlü</strong></span>
+                  </div>
+                  <div class="rental-spec-item is-wide">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span><strong>Wolt üçün uyğun</strong>, uzun məsafə üçün rahat</span>
+                  </div>
+                </div>
+              </div>
+
+              <ul class="rental-features">
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  <span>Depozit 20 AZN - qaytarılır</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  <span>Gündəlik ödəniş</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  <span>Wolt üçün hazır</span>
+                </li>
+              </ul>
+
+              <div class="rental-btn-row">
+                <a
+                  href="https://wa.me/994505194419?text=Salam%2C%20icar%C9%99%20n%C9%99qliyyat%20haqq%C4%B1nda%20m%C9%99lumat%20almaq%20ist%C9%99yir%C9%99m"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-wa-green"
+                >
+                  <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+                    <path d="M16.004 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.348.613 4.642 1.778 6.663L2.667 29.333l6.835-1.792A13.28 13.28 0 0 0 16.004 29.333c7.363 0 13.333-5.973 13.333-13.333S23.367 2.667 16.004 2.667zm7.768 18.88c-.326.917-1.91 1.753-2.646 1.863-.672.1-1.524.142-2.46-.156-.567-.181-1.294-.421-2.228-.824-3.92-1.693-6.48-5.641-6.676-5.902-.195-.261-1.594-2.12-1.594-4.045 0-1.925 1.008-2.87 1.366-3.261.358-.391.782-.489 1.042-.489.261 0 .521.002.749.014.24.012.562-.091.879.671.326.782 1.108 2.704 1.205 2.9.098.195.163.423.033.684-.13.261-.195.423-.391.651-.195.228-.412.51-.587.684-.195.195-.398.407-.171.798.228.391 1.013 1.671 2.176 2.707 1.495 1.333 2.755 1.747 3.146 1.942.391.195.619.163.847-.098.228-.261.977-1.14 1.238-1.531.261-.391.521-.326.879-.195.358.13 2.279 1.075 2.67 1.27.391.195.651.293.749.456.098.163.098.944-.228 1.861z"/>
+                  </svg>
+                  WhatsApp-la Yaz
+                </a>
+                <a
+                  href="tel:+994505194419"
+                  class="btn-navy-gold"
+                  style="min-height: 48px; padding: 12px 18px; font-size: 15px;"
+                >
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+                  </svg>
+                  Zəng Et
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <!-- İCARƏ ŞƏRTLƏRİ BOX -->
+          <div class="lux-card" style="max-width: 980px; margin: 24px auto 0; padding: 26px 28px; border-color: var(--border-gold-strong);">
+            <h3 style="font-size: 19px; font-weight: 800; color: var(--text-gold); margin-bottom: 14px;">İcarə Şərtləri</h3>
+            <ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 10px; font-size: 15px; color: var(--text-muted);">
+              <li>Skuter depozitsiz verilir - <strong style="color: var(--text-main);">gündəlik 10 AZN</strong></li>
+              <li>Velosiped 20 AZN depozitlə verilir, depozit qaytarılır - <strong style="color: var(--text-main);">gündəlik 4 AZN</strong></li>
+              <li>Əlaqə: <a href="tel:+994505194419" class="font-mono" style="color: var(--text-gold); font-weight: 800;">+994 50 519 44 19</a></li>
+              <li>Sifariş üçün WhatsApp-la yazın və ya zəng edin</li>
+            </ul>
           </div>
         </div>
       </section>
@@ -2568,7 +3235,7 @@
 
     <!-- INSTAGRAM AD POPUP (4 SECONDS AFTER VISIT) -->
     <div id="ig-popup" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="ig-popup-heading">
-      <div class="modal-card" style="max-width: 440px;">
+      <div class="modal-card">
         <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; margin-bottom: 18px;">
           <div style="display: flex; align-items: center; gap: 14px;">
             <div class="logo-coin" style="width: 62px; height: 62px;">
@@ -2605,7 +3272,7 @@
 
     <!-- MAP APP CHOOSER MODAL -->
     <div id="map-chooser-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="map-chooser-title">
-      <div class="modal-card" style="max-width: 480px;">
+      <div class="modal-card">
         <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px;">
           <h2 id="map-chooser-title" class="font-serif" style="font-size: 24px; font-weight: 700; color: var(--text-gold);">
             Hansı tətbiqlə açmaq istəyirsən?
@@ -2713,7 +3380,7 @@
 
     <!-- WHATSAPP NUMBER CHOOSER MODAL -->
     <div id="wa-chooser-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="wa-chooser-title">
-      <div class="modal-card" style="max-width: 460px;">
+      <div class="modal-card">
         <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px;">
           <h2 id="wa-chooser-title" class="font-serif" style="font-size: 24px; font-weight: 700; color: var(--text-gold);">
             Hansı nömrə ilə yazmaq istəyirsən?
@@ -2766,6 +3433,54 @@
         </div>
 
         <button type="button" id="wa-chooser-close-btn" class="btn-navy-gold" style="width: 100%; margin-top: 16px; min-height: 46px; font-size: 14px; background: var(--bg-elevated); color: var(--text-main);">
+          Bağla
+        </button>
+      </div>
+    </div>
+
+    <!-- RENTAL DETAIL MODAL (CENTERED) -->
+    <div id="rental-detail-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="rental-modal-title">
+      <div class="modal-card">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px;">
+          <div>
+            <span id="rental-modal-badge" class="rental-badge rental-badge-free">DEPOZİTSİZ</span>
+            <h2 id="rental-modal-title" class="font-serif" style="font-size: 24px; font-weight: 700; color: var(--text-gold); margin-top: 6px;">
+              Xiaomi X9 Pro Skuter
+            </h2>
+            <p id="rental-modal-subtitle" style="font-size: 13px; color: var(--text-muted); font-weight: 600;">
+              İcarəyə verilir
+            </p>
+          </div>
+          <button type="button" id="rental-modal-close-x" aria-label="Bağla" style="width: 36px; height: 36px; border-radius: 10px; background: var(--bg-elevated); border: 1px solid var(--border-gold); color: var(--text-gold); font-size: 16px; font-weight: 700; flex-shrink: 0;">
+            ✕
+          </button>
+        </div>
+
+        <div class="rental-img-frame" style="height: 210px; cursor: default;">
+          <img id="rental-modal-img" src="assets/aistudio/WhatsApp_Image_2026-11-21_at_00.31.50_d08e6a4c.jpeg" alt="Nəqliyyat şəkli" />
+        </div>
+
+        <div id="rental-modal-thumbs" class="rental-thumbs-row" style="justify-content: center; margin-top: 10px;"></div>
+
+        <div id="rental-modal-price" class="rental-price-tag" style="margin-top: 14px;">Gündəlik 10 AZN</div>
+        <div id="rental-modal-specs" class="rental-specs-wrap" style="margin-top: 10px;"></div>
+        <ul id="rental-modal-features" class="rental-features" style="margin: 12px 0 18px;"></ul>
+
+        <div class="rental-btn-row" style="margin-top: 0;">
+          <a
+            href="https://wa.me/994505194419?text=Salam%2C%20icar%C9%99%20n%C9%99qliyyat%20haqq%C4%B1nda%20m%C9%99lumat%20almaq%20ist%C9%99yir%C9%99m"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-wa-green"
+          >
+            WhatsApp-la Yaz
+          </a>
+          <a href="tel:+994505194419" class="btn-navy-gold" style="min-height: 48px; padding: 12px 18px; font-size: 15px;">
+            Zəng Et
+          </a>
+        </div>
+
+        <button type="button" id="rental-modal-close-btn" class="btn-navy-gold" style="width: 100%; margin-top: 12px; min-height: 44px; font-size: 14px; background: var(--bg-elevated); color: var(--text-main);">
           Bağla
         </button>
       </div>
@@ -3205,6 +3920,231 @@
           }, 4000);
         }
 
+        // 13. TOP RENTAL BANNER, HEADER PILL SCROLL & RENTAL MODAL
+        var topRentalBanner = document.getElementById('top-rental-banner');
+        var topRentalClose = document.getElementById('top-rental-close');
+        var rentalSection = document.getElementById('icare');
+
+        function scrollToRentalSection() {
+          if (rentalSection) {
+            rentalSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+
+        if (topRentalBanner) {
+          topRentalBanner.addEventListener('click', scrollToRentalSection);
+          topRentalBanner.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              scrollToRentalSection();
+            }
+          });
+        }
+
+        if (topRentalClose && topRentalBanner) {
+          topRentalClose.addEventListener('click', function (e) {
+            e.stopPropagation();
+            topRentalBanner.style.display = 'none';
+          });
+        }
+
+        document.querySelectorAll('.js-scroll-rental').forEach(function (btn) {
+          btn.addEventListener('click', scrollToRentalSection);
+        });
+
+        var RENTAL_ITEMS = {
+          skuter: {
+            title: 'Xiaomi X9 Pro Skuter',
+            subtitle: 'İcarəyə verilir',
+            badge: 'DEPOZİTSİZ',
+            badgeClass: 'rental-badge rental-badge-free',
+            price: 'Gündəlik 10 AZN',
+            images: [
+              {
+                src: 'assets/aistudio/WhatsApp_Image_2026-11-21_at_00.31.50_d08e6a4c.jpeg',
+                alt: 'Xiaomi X9 Pro Skuter ön görünüş',
+              },
+              {
+                src: 'assets/aistudio/WhatsApp_Image_2026-11-21_at_00.31.50__2__17430c1f.jpeg',
+                alt: 'Xiaomi X9 Pro Skuter yan görünüş',
+              },
+            ],
+            specs: [
+              'Maksimal sürət: 40-45 km/s-ə qədər',
+              'Bir zaryadka ilə: 40-65 km-ə qədər',
+              'Zaryadka vaxtı: 3-7 saat',
+              'Maksimal yük: 65-90 kq-a qədər',
+              'Təkərlər: 10 düym, yolsuzluq üçün uyğun',
+            ],
+            features: ['Depozit yoxdur', 'Gündəlik ödəniş', 'Wolt üçün hazır'],
+          },
+          velosiped: {
+            title: '29-luq Skorostnoy Velosiped',
+            subtitle: 'İcarəyə verilir',
+            badge: 'Depozit 20 AZN',
+            badgeClass: 'rental-badge rental-badge-dep',
+            price: 'Gündəlik 4 AZN',
+            images: [
+              {
+                src: 'assets/aistudio/WhatsApp_Image_2026-11-21_at_00.31.50__1__df766228.jpeg',
+                alt: '29-luq Skorostnoy Velosiped',
+              },
+            ],
+            specs: [
+              'Təkər ölçüsü: 29 düym',
+              'Sürət sayı: 21 skorost',
+              'Əyləc: Disk əyləc',
+              'Çərçivə: Yüngül, dözümlü',
+              'Wolt üçün uyğun, uzun məsafə üçün rahat',
+            ],
+            features: ['Depozit 20 AZN - qaytarılır', 'Gündəlik ödəniş', 'Wolt üçün hazır'],
+          },
+        };
+
+        var skuterMainImg = document.getElementById('skuter-main-img');
+        var skuterThumbBtns = document.querySelectorAll('.js-skuter-thumb');
+        skuterThumbBtns.forEach(function (thumbBtn) {
+          thumbBtn.addEventListener('click', function () {
+            var nextSrc = thumbBtn.getAttribute('data-src');
+            if (skuterMainImg && nextSrc) {
+              skuterMainImg.src = nextSrc;
+            }
+            skuterThumbBtns.forEach(function (b) {
+              b.classList.remove('is-active');
+            });
+            thumbBtn.classList.add('is-active');
+          });
+        });
+
+        var rentalModal = document.getElementById('rental-detail-modal');
+        var rentalModalTitle = document.getElementById('rental-modal-title');
+        var rentalModalSubtitle = document.getElementById('rental-modal-subtitle');
+        var rentalModalBadge = document.getElementById('rental-modal-badge');
+        var rentalModalImg = document.getElementById('rental-modal-img');
+        var rentalModalThumbs = document.getElementById('rental-modal-thumbs');
+        var rentalModalPrice = document.getElementById('rental-modal-price');
+        var rentalModalSpecs = document.getElementById('rental-modal-specs');
+        var rentalModalFeatures = document.getElementById('rental-modal-features');
+        var rentalModalCloseX = document.getElementById('rental-modal-close-x');
+        var rentalModalCloseBtn = document.getElementById('rental-modal-close-btn');
+
+        function openRentalModal(key) {
+          var item = RENTAL_ITEMS[key];
+          if (!item || !rentalModal) return;
+
+          if (rentalModalTitle) rentalModalTitle.textContent = item.title;
+          if (rentalModalSubtitle) rentalModalSubtitle.textContent = item.subtitle;
+          if (rentalModalBadge) {
+            rentalModalBadge.textContent = item.badge;
+            rentalModalBadge.className = item.badgeClass;
+          }
+          if (rentalModalPrice) rentalModalPrice.textContent = item.price;
+
+          var initialImg = item.images[0];
+          if (key === 'skuter' && skuterMainImg) {
+            var currentSrc = skuterMainImg.getAttribute('src');
+            var matched = item.images.find(function (img) {
+              return img.src === currentSrc;
+            });
+            if (matched) initialImg = matched;
+          }
+          if (rentalModalImg && initialImg) {
+            rentalModalImg.src = initialImg.src;
+            rentalModalImg.alt = initialImg.alt;
+          }
+
+          if (rentalModalThumbs) {
+            rentalModalThumbs.innerHTML = '';
+            if (item.images.length > 1) {
+              rentalModalThumbs.style.display = 'flex';
+              item.images.forEach(function (img) {
+                var btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'rental-thumb-btn' + (img.src === initialImg.src ? ' is-active' : '');
+                btn.setAttribute('aria-label', img.alt);
+                btn.innerHTML = '<img src="' + img.src + '" alt="' + img.alt + '" />';
+                btn.addEventListener('click', function () {
+                  if (rentalModalImg) {
+                    rentalModalImg.src = img.src;
+                    rentalModalImg.alt = img.alt;
+                  }
+                  rentalModalThumbs.querySelectorAll('.rental-thumb-btn').forEach(function (b) {
+                    b.classList.remove('is-active');
+                  });
+                  btn.classList.add('is-active');
+                });
+                rentalModalThumbs.appendChild(btn);
+              });
+            } else {
+              rentalModalThumbs.style.display = 'none';
+            }
+          }
+
+          if (rentalModalSpecs && item.specs) {
+            rentalModalSpecs.innerHTML =
+              '<div class="rental-specs-title">Təyinat</div>' +
+              '<div class="rental-specs-grid">' +
+              item.specs
+                .map(function (spec, idx) {
+                  var wideCls = idx === item.specs.length - 1 && item.specs.length % 2 === 1 ? ' is-wide' : '';
+                  return (
+                    '<div class="rental-spec-item' + wideCls + '">' +
+                    '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">' +
+                    '<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>' +
+                    '</svg>' +
+                    '<span>' + spec + '</span>' +
+                    '</div>'
+                  );
+                })
+                .join('') +
+              '</div>';
+          }
+
+          if (rentalModalFeatures) {
+            rentalModalFeatures.innerHTML = item.features
+              .map(function (feat) {
+                return (
+                  '<li>' +
+                  '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.2" aria-hidden="true">' +
+                  '<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>' +
+                  '</svg>' +
+                  '<span>' + feat + '</span>' +
+                  '</li>'
+                );
+              })
+              .join('');
+          }
+
+          rentalModal.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeRentalModal() {
+          if (!rentalModal) return;
+          rentalModal.classList.remove('is-open');
+          document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('.js-open-rental-modal').forEach(function (trigger) {
+          trigger.addEventListener('click', function () {
+            openRentalModal(trigger.getAttribute('data-rental'));
+          });
+          trigger.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              openRentalModal(trigger.getAttribute('data-rental'));
+            }
+          });
+        });
+
+        if (rentalModalCloseX) rentalModalCloseX.addEventListener('click', closeRentalModal);
+        if (rentalModalCloseBtn) rentalModalCloseBtn.addEventListener('click', closeRentalModal);
+        if (rentalModal) {
+          rentalModal.addEventListener('click', function (e) {
+            if (e.target === rentalModal) closeRentalModal();
+          });
+        }
+
         // ESCAPE KEY FOR MODALS
         window.addEventListener('keydown', function (e) {
           if (e.key === 'Escape') {
@@ -3212,6 +4152,7 @@
             closeIgPopup();
             closeMapChooser();
             closeWaChooser();
+            closeRentalModal();
           }
         });
       })();
