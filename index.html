@@ -1458,6 +1458,41 @@
         }
       }
 
+      .modal-card.modal-card-welcome {
+        max-width: 440px;
+        padding: 24px;
+      }
+
+      .welcome-steps {
+        margin-top: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .welcome-step-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 11px 13px;
+        border-radius: 14px;
+        background: var(--bg-elevated);
+        border: 1px solid rgba(212, 175, 55, 0.25);
+      }
+
+      .welcome-step-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        background: rgba(212, 175, 55, 0.14);
+        border: 1px solid rgba(212, 175, 55, 0.42);
+        color: var(--text-gold);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
       .chooser-option {
         display: flex;
         align-items: center;
@@ -1710,6 +1745,303 @@
       .rental-spec-item strong {
         color: var(--text-main);
         font-weight: 700;
+      }
+
+      /* EARNINGS FORECAST CALCULATOR (#qazanc-hesablayici) */
+      .fc-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+        align-items: stretch;
+      }
+
+      @media (min-width: 900px) {
+        .fc-grid {
+          grid-template-columns: 7fr 5fr;
+        }
+      }
+
+      .fc-btn-group {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      @media (min-width: 560px) {
+        .fc-btn-group.is-4 {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+      }
+
+      .fc-opt-btn {
+        min-height: 46px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        background: var(--bg-elevated);
+        border: 1px solid var(--border-gold);
+        color: var(--text-main);
+        font-size: 13.5px;
+        font-weight: 700;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        transition: all 0.16s ease;
+      }
+
+      .fc-opt-btn:hover {
+        border-color: #D4AF37;
+      }
+
+      .fc-opt-btn.is-active {
+        background: linear-gradient(135deg, #E8C766 0%, #D4AF37 100%);
+        color: #0A1A3A;
+        border-color: #D4AF37;
+        box-shadow: 0 8px 20px rgba(212, 175, 55, 0.25);
+      }
+
+      .fc-opt-sub {
+        font-size: 11px;
+        font-weight: 600;
+        opacity: 0.78;
+      }
+
+      .fc-slider {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 8px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, rgba(212, 175, 55, 0.45), rgba(212, 175, 55, 0.85));
+        outline: none;
+      }
+
+      .fc-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 24px;
+        height: 24px;
+        border-radius: 999px;
+        background: #E8C766;
+        border: 3px solid #0A1A3A;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+        cursor: pointer;
+      }
+
+      .fc-slider::-moz-range-thumb {
+        width: 24px;
+        height: 24px;
+        border-radius: 999px;
+        background: #E8C766;
+        border: 3px solid #0A1A3A;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+        cursor: pointer;
+      }
+
+      .fc-result-box {
+        background: #07142C;
+        color: #F8F5EE;
+        border: 1px solid rgba(212, 175, 55, 0.45);
+        border-radius: 18px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .fc-stat-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 13px 15px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(212, 175, 55, 0.25);
+      }
+
+      .fc-stat-row.is-highlight {
+        background: rgba(212, 175, 55, 0.14);
+        border-color: rgba(232, 199, 102, 0.55);
+      }
+
+      /* FLOATING AI ASSISTANT BUTTON (BOTTOM LEFT) */
+      .floating-ai-wrap {
+        position: fixed;
+        left: 16px;
+        bottom: 80px;
+        z-index: 35;
+      }
+
+      @media (min-width: 768px) {
+        .floating-ai-wrap {
+          left: 24px;
+          bottom: 24px;
+        }
+      }
+
+      .floating-ai-btn {
+        height: 54px;
+        padding: 0 18px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #E8C766 0%, #D4AF37 55%, #C9A227 100%);
+        color: #0A1A3A;
+        border: 1.5px solid #0A1A3A;
+        font-size: 14px;
+        font-weight: 800;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        box-shadow: 0 10px 28px rgba(212, 175, 55, 0.42);
+        transition: transform 0.18s ease, filter 0.18s ease;
+      }
+
+      .floating-ai-btn:hover {
+        transform: scale(1.05);
+        filter: brightness(1.06);
+      }
+
+      /* CENTERED ASSISTANT CHAT MODAL */
+      .modal-card.assistant-modal-card {
+        width: 100%;
+        max-width: 100%;
+        height: min(520px, 84vh);
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      @media (min-width: 480px) {
+        .modal-card.assistant-modal-card {
+          width: 380px;
+          max-width: 380px;
+          height: 520px;
+          padding: 0;
+        }
+      }
+
+      .chat-header {
+        padding: 16px 18px;
+        background: #07142C;
+        color: #F8F5EE;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-shrink: 0;
+      }
+
+      .chat-online-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: #22C55E;
+        box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
+        display: inline-block;
+      }
+
+      .chat-chips {
+        padding: 10px 14px;
+        background: var(--bg-elevated);
+        border-bottom: 1px solid var(--border-gold);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        flex-shrink: 0;
+      }
+
+      .chat-chip-btn {
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: var(--bg-card);
+        border: 1px solid var(--border-gold);
+        color: var(--text-gold);
+        font-size: 11.5px;
+        font-weight: 700;
+        transition: all 0.15s ease;
+      }
+
+      .chat-chip-btn:hover {
+        background: rgba(212, 175, 55, 0.16);
+        border-color: #D4AF37;
+      }
+
+      .chat-messages {
+        flex: 1;
+        overflow-y: auto;
+        padding: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .chat-bubble {
+        max-width: 86%;
+        padding: 10px 13px;
+        border-radius: 16px;
+        font-size: 13.5px;
+        line-height: 1.45;
+        word-wrap: break-word;
+      }
+
+      .chat-bubble-bot {
+        align-self: flex-start;
+        background: var(--bg-elevated);
+        color: var(--text-main);
+        border: 1px solid var(--border-gold);
+        border-bottom-left-radius: 4px;
+      }
+
+      .chat-bubble-user {
+        align-self: flex-end;
+        background: linear-gradient(135deg, #E8C766 0%, #D4AF37 100%);
+        color: #0A1A3A;
+        font-weight: 700;
+        border-bottom-right-radius: 4px;
+      }
+
+      .chat-input-bar {
+        padding: 12px 14px;
+        background: var(--bg-elevated);
+        border-top: 1px solid var(--border-gold);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-shrink: 0;
+      }
+
+      .chat-input {
+        flex: 1;
+        min-width: 0;
+        height: 42px;
+        padding: 0 14px;
+        border-radius: 12px;
+        background: var(--bg-card);
+        border: 1px solid var(--border-gold);
+        color: var(--text-main);
+        font-size: 13.5px;
+        outline: none;
+      }
+
+      .chat-input:focus {
+        border-color: #D4AF37;
+      }
+
+      .chat-send-btn {
+        height: 42px;
+        padding: 0 14px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #E8C766 0%, #D4AF37 100%);
+        color: #0A1A3A;
+        font-size: 13px;
+        font-weight: 800;
+        border: none;
+        flex-shrink: 0;
       }
 
       /* FOOTER */
@@ -2614,6 +2946,117 @@
         </div>
       </section>
 
+      <!-- 7C. QAZANCINI HESABLA -->
+      <section id="qazanc-hesablayici" class="section section-alt">
+        <div class="container" style="max-width: 980px;">
+          <div style="text-align: center; max-width: 640px; margin: 0 auto 36px;">
+            <p class="kicker">Gəlir Planlayıcısı</p>
+            <h2 class="section-title">Qazancını Hesabla</h2>
+            <p class="section-desc" style="margin: 12px auto 0;">
+              Gündə neçə saat işləsən, nə qədər qazanarsan?
+            </p>
+          </div>
+
+          <div class="lux-card" style="padding: 26px; border-color: var(--border-gold-strong);">
+            <div class="fc-grid">
+              <!-- Controls -->
+              <div style="display: flex; flex-direction: column; gap: 22px;">
+                <div>
+                  <div style="font-size: 14px; font-weight: 800; color: var(--text-main); margin-bottom: 10px;">
+                    Nəqliyyat seçimi
+                  </div>
+                  <div class="fc-btn-group is-4" role="group" aria-label="Nəqliyyat seçimi">
+                    <button type="button" class="fc-opt-btn js-fc-transport" data-rate="4" data-name="Piyada">
+                      <span>Piyada</span>
+                      <span class="fc-opt-sub">4 AZN/saat</span>
+                    </button>
+                    <button type="button" class="fc-opt-btn js-fc-transport" data-rate="5" data-name="Velosiped">
+                      <span>Velosiped</span>
+                      <span class="fc-opt-sub">5 AZN/saat</span>
+                    </button>
+                    <button type="button" class="fc-opt-btn js-fc-transport is-active" data-rate="7" data-name="Skuter">
+                      <span>Skuter</span>
+                      <span class="fc-opt-sub">7 AZN/saat</span>
+                    </button>
+                    <button type="button" class="fc-opt-btn js-fc-transport" data-rate="9" data-name="Moto">
+                      <span>Moto</span>
+                      <span class="fc-opt-sub">9 AZN/saat</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div>
+                  <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px;">
+                    <label for="fc-hours-slider" style="font-size: 14px; font-weight: 800; color: var(--text-main);">
+                      Gündəlik saat
+                    </label>
+                    <span id="fc-hours-label" class="font-mono" style="padding: 4px 12px; border-radius: 999px; background: rgba(212, 175, 55, 0.16); border: 1px solid rgba(212, 175, 55, 0.45); color: var(--text-gold); font-size: 13px; font-weight: 800;">
+                      8 saat
+                    </span>
+                  </div>
+                  <input
+                    id="fc-hours-slider"
+                    type="range"
+                    min="2"
+                    max="12"
+                    step="1"
+                    value="8"
+                    class="fc-slider"
+                  />
+                  <div style="display: flex; justify-content: space-between; margin-top: 6px; font-size: 12px; color: var(--text-muted); font-weight: 600;">
+                    <span>2 saat</span>
+                    <span>7 saat</span>
+                    <span>12 saat</span>
+                  </div>
+                </div>
+
+                <div>
+                  <div style="font-size: 14px; font-weight: 800; color: var(--text-main); margin-bottom: 10px;">
+                    Həftədə neçə gün
+                  </div>
+                  <div class="fc-btn-group is-4" role="group" aria-label="Həftəlik iş günü">
+                    <button type="button" class="fc-opt-btn js-fc-days" data-days="3">3 gün</button>
+                    <button type="button" class="fc-opt-btn js-fc-days" data-days="5">5 gün</button>
+                    <button type="button" class="fc-opt-btn js-fc-days is-active" data-days="6">6 gün</button>
+                    <button type="button" class="fc-opt-btn js-fc-days" data-days="7">7 gün</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Live Result Box -->
+              <div class="fc-result-box">
+                <div>
+                  <div style="font-size: 12px; font-weight: 700; color: #E8C766; text-transform: uppercase; letter-spacing: 0.06em;">
+                    Təxmini Gəlir Nəticəsi
+                  </div>
+                  <div style="margin-top: 14px; display: flex; flex-direction: column; gap: 10px;">
+                    <div class="fc-stat-row">
+                      <span style="font-size: 13.5px; color: #E2DDD2;">Gündəlik təxmini qazanc:</span>
+                      <strong id="fc-daily-out" class="font-mono" style="font-size: 20px; color: #E8C766;">56 AZN</strong>
+                    </div>
+                    <div class="fc-stat-row">
+                      <span style="font-size: 13.5px; color: #E2DDD2;">Həftəlik təxmini qazanc:</span>
+                      <strong id="fc-weekly-out" class="font-mono" style="font-size: 20px; color: #E8C766;">336 AZN</strong>
+                    </div>
+                    <div class="fc-stat-row is-highlight">
+                      <span style="font-size: 14px; font-weight: 700; color: #FFFFFF;">Aylıq təxmini qazanc:</span>
+                      <strong id="fc-monthly-out" class="font-mono" style="font-size: 24px; color: #E8C766;">1344 AZN</strong>
+                    </div>
+                  </div>
+                  <p style="margin-top: 12px; font-size: 12px; color: #B6B0A2;">
+                    Bu təxmini hesablamadır, sifariş sayından asılıdır.
+                  </p>
+                </div>
+
+                <button type="button" class="btn-gold js-open-reg" style="width: 100%; min-height: 48px; font-size: 15px;">
+                  İndi Qeydiyyatdan Keç
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- 8. VİDEO İZAH -->
       <section id="video-izah" class="section">
         <div class="container" style="max-width: 960px;">
@@ -3147,6 +3590,21 @@
       </div>
     </nav>
 
+    <!-- FLOATING AI ASSISTANT BUTTON (BOTTOM LEFT) -->
+    <div class="floating-ai-wrap">
+      <button
+        type="button"
+        id="open-assistant-btn"
+        aria-label="FLASHLY Köməkçi"
+        class="floating-ai-btn"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <span>Köməkçi</span>
+      </button>
+    </div>
+
     <!-- FLOATING WHATSAPP BUTTON (OPENS NUMBER CHOOSER MODAL) -->
     <div class="floating-wa-wrap">
       <div class="floating-wa-tooltip" role="tooltip">WhatsApp-da Yaz</div>
@@ -3161,6 +3619,57 @@
           <path d="M16.004 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.348.613 4.642 1.778 6.663L2.667 29.333l6.835-1.792A13.28 13.28 0 0 0 16.004 29.333c7.363 0 13.333-5.973 13.333-13.333S23.367 2.667 16.004 2.667zm7.768 18.88c-.326.917-1.91 1.753-2.646 1.863-.672.1-1.524.142-2.46-.156-.567-.181-1.294-.421-2.228-.824-3.92-1.693-6.48-5.641-6.676-5.902-.195-.261-1.594-2.12-1.594-4.045 0-1.925 1.008-2.87 1.366-3.261.358-.391.782-.489 1.042-.489.261 0 .521.002.749.014.24.012.562-.091.879.671.326.782 1.108 2.704 1.205 2.9.098.195.163.423.033.684-.13.261-.195.423-.391.651-.195.228-.412.51-.587.684-.195.195-.398.407-.171.798.228.391 1.013 1.671 2.176 2.707 1.495 1.333 2.755 1.747 3.146 1.942.391.195.619.163.847-.098.228-.261.977-1.14 1.238-1.531.261-.391.521-.326.879-.195.358.13 2.279 1.075 2.67 1.27.391.195.651.293.749.456.098.163.098.944-.228 1.861z"/>
         </svg>
       </button>
+    </div>
+
+    <!-- CENTERED AI ASSISTANT CHAT MODAL -->
+    <div id="assistant-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="assistant-modal-title">
+      <div class="modal-card assistant-modal-card">
+        <div class="chat-header">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div class="logo-coin" style="width: 36px; height: 36px;">
+              <img src="assets/aistudio/image_20261119_094022_11548edc.jpg" alt="FLASHLY Köməkçi" />
+            </div>
+            <div>
+              <h2 id="assistant-modal-title" style="font-size: 16px; font-weight: 800; color: #E8C766; line-height: 1.2;">
+                FLASHLY Köməkçi
+              </h2>
+              <div style="display: flex; align-items: center; gap: 6px; margin-top: 2px; font-size: 11.5px; color: #E2DDD2;">
+                <span class="chat-online-dot" aria-hidden="true"></span>
+                <span>Onlayndır</span>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" id="assistant-close-x" aria-label="Bağla" style="width: 34px; height: 34px; border-radius: 10px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(212, 175, 55, 0.45); color: #E8C766; font-size: 15px; font-weight: 700;">
+            ✕
+          </button>
+        </div>
+
+        <div class="chat-chips" aria-label="Tez-tez verilən suallar">
+          <button type="button" class="chat-chip-btn js-chat-chip" data-q="Necə qeydiyyatdan keçim?">Necə qeydiyyatdan keçim?</button>
+          <button type="button" class="chat-chip-btn js-chat-chip" data-q="İcarə qiymətləri nədir?">İcarə qiymətləri nədir?</button>
+          <button type="button" class="chat-chip-btn js-chat-chip" data-q="Nə qədər qazanaram?">Nə qədər qazanaram?</button>
+          <button type="button" class="chat-chip-btn js-chat-chip" data-q="Ofis haradadır?">Ofis haradadır?</button>
+        </div>
+
+        <div id="assistant-messages" class="chat-messages" aria-live="polite">
+          <div class="chat-bubble chat-bubble-bot">
+            Salam! Mən FLASHLY köməkçisiyəm. Qeydiyyat, icarə, qazanc, ofis haqqında soruşa bilərsiniz.
+          </div>
+        </div>
+
+        <form id="assistant-form" class="chat-input-bar">
+          <input
+            type="text"
+            id="assistant-input"
+            class="chat-input"
+            placeholder="Sualınızı yazın..."
+            autocomplete="off"
+            aria-label="Sualınızı yazın"
+          />
+          <button type="submit" class="chat-send-btn">Göndər</button>
+        </form>
+      </div>
     </div>
 
     <!-- REGISTRATION POPUP MODAL -->
@@ -3233,40 +3742,101 @@
       </div>
     </div>
 
-    <!-- INSTAGRAM AD POPUP (4 SECONDS AFTER VISIT) -->
-    <div id="ig-popup" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="ig-popup-heading">
-      <div class="modal-card">
-        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; margin-bottom: 18px;">
-          <div style="display: flex; align-items: center; gap: 14px;">
-            <div class="logo-coin" style="width: 62px; height: 62px;">
-              <img src="assets/aistudio/image_20261119_094022_11548edc.jpg" alt="FLASHLY @woltqeydiyyati" />
+    <!-- REGISTRATION WELCOME MODAL (2 SECONDS AFTER VISIT, ONCE PER VISIT) -->
+    <div id="reg-welcome-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="reg-welcome-heading">
+      <div class="modal-card modal-card-welcome">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div class="logo-coin" style="width: 48px; height: 48px;">
+              <img src="assets/aistudio/image_20261119_094022_11548edc.jpg" alt="FLASHLY" />
             </div>
             <div>
-              <div style="font-size: 12px; font-weight: 700; color: var(--text-gold);">Instagram</div>
-              <div style="font-size: 16px; font-weight: 800;">@woltqeydiyyati</div>
+              <h2 id="reg-welcome-heading" class="font-serif" style="font-size: 24px; font-weight: 700; color: var(--text-gold); line-height: 1.15;">
+                İndi Qeydiyyatdan Keçin
+              </h2>
+              <p style="margin-top: 3px; font-size: 13.5px; font-weight: 600; color: var(--text-muted);">
+                Çantanızı götürün, işə başlayın
+              </p>
             </div>
           </div>
 
-          <button type="button" id="ig-close-x" aria-label="Bağla" style="width: 36px; height: 36px; border-radius: 10px; background: var(--bg-elevated); border: 1px solid var(--border-gold); color: var(--text-gold); font-size: 16px; font-weight: 700;">
+          <button type="button" id="reg-welcome-close-x" aria-label="Bağla" style="width: 36px; height: 36px; border-radius: 10px; background: var(--bg-elevated); border: 1px solid var(--border-gold); color: var(--text-gold); font-size: 16px; font-weight: 700; flex-shrink: 0;">
             ✕
           </button>
         </div>
 
-        <h2 id="ig-popup-heading" class="font-serif" style="font-size: 24px; font-weight: 700; color: var(--text-gold);">
-          Instagram Səhifəmizi İzlə
-        </h2>
-        <p style="margin-top: 10px; font-size: 15px; color: var(--text-muted);">
-          Ən son yeniliklər, qazanc sübutları və canlı yayımlar burada!
-        </p>
+        <div class="welcome-steps">
+          <!-- Step 1: Form -->
+          <div class="welcome-step-row">
+            <span class="welcome-step-icon" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+              </svg>
+            </span>
+            <div>
+              <div style="font-size: 14px; font-weight: 800; color: var(--text-main);">1. Qeydiyyatdan keçin</div>
+              <div style="font-size: 12.5px; color: var(--text-muted); margin-top: 2px;">Formu doldurun, 1 dəqiqə çəkir</div>
+            </div>
+          </div>
 
-        <div style="margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px;">
-          <a href="https://instagram.com/woltqeydiyyati" target="_blank" rel="noopener noreferrer" id="ig-follow-cta" class="btn-gold" style="flex: 1; min-height: 48px; font-size: 14px;">
-            Instagram-da İzlə
-          </a>
-          <button type="button" id="ig-close-btn" class="btn-navy-gold" style="min-height: 48px; font-size: 14px; background: var(--bg-elevated); color: var(--text-main);">
-            Bağla
+          <!-- Step 2: Office / Pin -->
+          <div class="welcome-step-row">
+            <span class="welcome-step-icon" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </span>
+            <div>
+              <div style="font-size: 14px; font-weight: 800; color: var(--text-main);">2. Ofisə yaxınlaşın</div>
+              <div style="font-size: 12.5px; color: var(--text-muted); margin-top: 2px;">Məmməd Araz 25A, English Yard, 2-ci mərtəbə</div>
+            </div>
+          </div>
+
+          <!-- Step 3: Bag -->
+          <div class="welcome-step-row">
+            <span class="welcome-step-icon" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+              </svg>
+            </span>
+            <div>
+              <div style="font-size: 14px; font-weight: 800; color: var(--text-main);">3. Çantanızı təhvil alın</div>
+              <div style="font-size: 12.5px; color: var(--text-muted); margin-top: 2px;">Çanta ofisdə verilir</div>
+            </div>
+          </div>
+
+          <!-- Step 4: Moto / Play -->
+          <div class="welcome-step-row">
+            <span class="welcome-step-icon" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </span>
+            <div>
+              <div style="font-size: 14px; font-weight: 800; color: var(--text-main);">4. İşə başlayın</div>
+              <div style="font-size: 12.5px; color: var(--text-muted); margin-top: 2px;">Elə həmin gün qazanc əldə edin</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+          <button type="button" id="reg-welcome-start-btn" class="btn-gold" style="width: 100%; min-height: 48px; font-size: 15px;">
+            İndi Qeydiyyatdan Keç
+          </button>
+          <button type="button" id="reg-welcome-later-btn" class="btn-navy-gold" style="width: 100%; min-height: 44px; font-size: 14px; background: transparent; color: var(--text-main); border-color: var(--border-gold);">
+            Sonra
           </button>
         </div>
+
+        <p style="margin-top: 14px; text-align: center; font-size: 12px; font-weight: 600; color: var(--text-muted);">
+          FLASHLY • Wolt Qeydiyyatı | Bakı
+        </p>
       </div>
     </div>
 
@@ -3886,38 +4456,48 @@
           });
         }
 
-        // 12. INSTAGRAM POPUP AFTER 4 SECONDS (ONCE PER VISIT)
-        var igPopup = document.getElementById('ig-popup');
-        var igCloseX = document.getElementById('ig-close-x');
-        var igCloseBtn = document.getElementById('ig-close-btn');
-        var igFollowCta = document.getElementById('ig-follow-cta');
+        // 12. REGISTRATION WELCOME MODAL AFTER 2 SECONDS (ONCE PER VISIT)
+        var regWelcomeModal = document.getElementById('reg-welcome-modal');
+        var regWelcomeCloseX = document.getElementById('reg-welcome-close-x');
+        var regWelcomeLaterBtn = document.getElementById('reg-welcome-later-btn');
+        var regWelcomeStartBtn = document.getElementById('reg-welcome-start-btn');
 
-        function closeIgPopup() {
-          if (igPopup) igPopup.classList.remove('is-open');
+        function closeRegWelcomeModal() {
+          if (!regWelcomeModal) return;
+          regWelcomeModal.classList.remove('is-open');
+          if (!regModal || !regModal.classList.contains('is-open')) {
+            document.body.style.overflow = '';
+          }
         }
 
-        if (igCloseX) igCloseX.addEventListener('click', closeIgPopup);
-        if (igCloseBtn) igCloseBtn.addEventListener('click', closeIgPopup);
-        if (igFollowCta) igFollowCta.addEventListener('click', closeIgPopup);
-        if (igPopup) {
-          igPopup.addEventListener('click', function (e) {
-            if (e.target === igPopup) closeIgPopup();
+        if (regWelcomeCloseX) regWelcomeCloseX.addEventListener('click', closeRegWelcomeModal);
+        if (regWelcomeLaterBtn) regWelcomeLaterBtn.addEventListener('click', closeRegWelcomeModal);
+        if (regWelcomeStartBtn) {
+          regWelcomeStartBtn.addEventListener('click', function () {
+            closeRegWelcomeModal();
+            openRegModal();
+          });
+        }
+        if (regWelcomeModal) {
+          regWelcomeModal.addEventListener('click', function (e) {
+            if (e.target === regWelcomeModal) closeRegWelcomeModal();
           });
         }
 
-        var igAlreadyShown = false;
+        var welcomeAlreadyShown = false;
         try {
-          igAlreadyShown = sessionStorage.getItem('flashly_ig_popup_shown') === '1';
+          welcomeAlreadyShown = sessionStorage.getItem('flashly_reg_welcome_shown') === '1';
         } catch (e) {}
 
-        if (!igAlreadyShown && igPopup) {
+        if (!welcomeAlreadyShown && regWelcomeModal) {
           window.setTimeout(function () {
             if (regModal && regModal.classList.contains('is-open')) return;
-            igPopup.classList.add('is-open');
+            regWelcomeModal.classList.add('is-open');
+            document.body.style.overflow = 'hidden';
             try {
-              sessionStorage.setItem('flashly_ig_popup_shown', '1');
+              sessionStorage.setItem('flashly_reg_welcome_shown', '1');
             } catch (e) {}
-          }, 4000);
+          }, 2000);
         }
 
         // 13. TOP RENTAL BANNER, HEADER PILL SCROLL & RENTAL MODAL
@@ -4145,14 +4725,215 @@
           });
         }
 
+        // 14. EARNINGS FORECAST CALCULATOR (#qazanc-hesablayici)
+        var fcRate = 7;
+        var fcHours = 8;
+        var fcDays = 6;
+        var fcHoursSlider = document.getElementById('fc-hours-slider');
+        var fcHoursLabel = document.getElementById('fc-hours-label');
+        var fcDailyOut = document.getElementById('fc-daily-out');
+        var fcWeeklyOut = document.getElementById('fc-weekly-out');
+        var fcMonthlyOut = document.getElementById('fc-monthly-out');
+        var fcTransportBtns = document.querySelectorAll('.js-fc-transport');
+        var fcDayBtns = document.querySelectorAll('.js-fc-days');
+
+        function updateForecastCalc() {
+          var daily = fcRate * fcHours;
+          var weekly = daily * fcDays;
+          var monthly = weekly * 4;
+          if (fcHoursLabel) fcHoursLabel.textContent = fcHours + ' saat';
+          if (fcDailyOut) fcDailyOut.textContent = daily + ' AZN';
+          if (fcWeeklyOut) fcWeeklyOut.textContent = weekly + ' AZN';
+          if (fcMonthlyOut) fcMonthlyOut.textContent = monthly + ' AZN';
+        }
+
+        fcTransportBtns.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            fcRate = Number(btn.getAttribute('data-rate')) || 4;
+            fcTransportBtns.forEach(function (b) {
+              b.classList.remove('is-active');
+            });
+            btn.classList.add('is-active');
+            updateForecastCalc();
+          });
+        });
+
+        if (fcHoursSlider) {
+          fcHoursSlider.addEventListener('input', function () {
+            fcHours = Number(fcHoursSlider.value) || 8;
+            updateForecastCalc();
+          });
+        }
+
+        fcDayBtns.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            fcDays = Number(btn.getAttribute('data-days')) || 6;
+            fcDayBtns.forEach(function (b) {
+              b.classList.remove('is-active');
+            });
+            btn.classList.add('is-active');
+            updateForecastCalc();
+          });
+        });
+
+        updateForecastCalc();
+
+        // 15. FLOATING AI ASSISTANT MODAL & KNOWLEDGE MATCHER
+        var assistantModal = document.getElementById('assistant-modal');
+        var openAssistantBtn = document.getElementById('open-assistant-btn');
+        var assistantCloseX = document.getElementById('assistant-close-x');
+        var assistantMessages = document.getElementById('assistant-messages');
+        var assistantForm = document.getElementById('assistant-form');
+        var assistantInput = document.getElementById('assistant-input');
+
+        function openAssistantModal() {
+          if (!assistantModal) return;
+          assistantModal.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+          if (assistantInput) {
+            window.setTimeout(function () {
+              assistantInput.focus();
+            }, 120);
+          }
+        }
+
+        function closeAssistantModal() {
+          if (!assistantModal) return;
+          assistantModal.classList.remove('is-open');
+          document.body.style.overflow = '';
+        }
+
+        function normalizeAz(str) {
+          return String(str || '')
+            .toLowerCase()
+            .replace(/ə/g, 'e')
+            .replace(/ç/g, 'c')
+            .replace(/ş/g, 's')
+            .replace(/ğ/g, 'g')
+            .replace(/ö/g, 'o')
+            .replace(/ü/g, 'u')
+            .replace(/ı/g, 'i')
+            .replace(/İ/g, 'i');
+        }
+
+        function getKnowledgeReply(questionText) {
+          var q = normalizeAz(questionText);
+
+          if (/icare|skuter|velosiped|velo|neqliyyat|qiymet|50 519|519 44/.test(q)) {
+            return {
+              text: 'Skuter depozitsiz gündəlik 10 AZN, Velosiped 20 AZN depozitlə gündəlik 4 AZN-dir. İcarə üçün əlaqə: +994 50 519 44 19.',
+              fallback: false,
+            };
+          }
+
+          if (/qazanc|qazan|maas|gelir|hesab|saat/.test(q)) {
+            return {
+              text: 'Qazanc seçdiyiniz nəqliyyatdan və iş saatınızdan asılıdır. Saytdakı "Qazancını Hesabla" hesablayıcısından təxmini məbləğə baxa bilərsiniz.',
+              fallback: false,
+            };
+          }
+
+          if (/ofis|unvan|harad|harada|mekan|memmed araz|english yard|yerles/.test(q)) {
+            return {
+              text: 'Ofisimiz: Məmməd Araz 25A, English Yard, 2-ci mərtəbə ünvanında yerləşir.',
+              fallback: false,
+            };
+          }
+
+          if (/canta|termo|sumka/.test(q)) {
+            return {
+              text: 'Wolt termo çantası ofisdə (Məmməd Araz 25A, English Yard, 2-ci mərtəbə) təhvil verilir.',
+              fallback: false,
+            };
+          }
+
+          if (/qeydiyyat|qeyd|qosul|nece basla|form/.test(q)) {
+            return {
+              text: 'Formu doldurun, ofisə gəlin (Məmməd Araz 25A, English Yard, 2-ci mərtəbə), çantanızı alın və işə başlayın. Qeydiyyat əlaqə nömrələri: +994 99 800 75 65 və +994 60 446 64 04.',
+              fallback: false,
+            };
+          }
+
+          if (/elaqe|nomre|telefon|whatsapp|zeng/.test(q)) {
+            return {
+              text: 'Qeydiyyat üçün əlaqə: +994 99 800 75 65 və +994 60 446 64 04. İcarə nəqliyyat üçün: +994 50 519 44 19.',
+              fallback: false,
+            };
+          }
+
+          return {
+            text: 'Bunu dəqiq bilmək üçün WhatsApp-la yazın',
+            fallback: true,
+          };
+        }
+
+        function appendChatMessage(text, isUser, showWaBtn) {
+          if (!assistantMessages) return;
+          var bubble = document.createElement('div');
+          bubble.className = 'chat-bubble ' + (isUser ? 'chat-bubble-user' : 'chat-bubble-bot');
+
+          var textNode = document.createElement('div');
+          textNode.textContent = text;
+          bubble.appendChild(textNode);
+
+          if (showWaBtn) {
+            var waBtn = document.createElement('a');
+            waBtn.href = 'https://wa.me/994998007565';
+            waBtn.target = '_blank';
+            waBtn.rel = 'noopener noreferrer';
+            waBtn.className = 'btn-wa-green';
+            waBtn.style.marginTop = '10px';
+            waBtn.style.minHeight = '38px';
+            waBtn.style.padding = '8px 14px';
+            waBtn.style.fontSize = '13px';
+            waBtn.textContent = 'WhatsApp-la Yaz';
+            bubble.appendChild(waBtn);
+          }
+
+          assistantMessages.appendChild(bubble);
+          assistantMessages.scrollTop = assistantMessages.scrollHeight;
+        }
+
+        function handleAssistantQuery(rawText) {
+          var clean = String(rawText || '').trim();
+          if (!clean) return;
+          appendChatMessage(clean, true, false);
+          var reply = getKnowledgeReply(clean);
+          appendChatMessage(reply.text, false, reply.fallback);
+        }
+
+        if (openAssistantBtn) openAssistantBtn.addEventListener('click', openAssistantModal);
+        if (assistantCloseX) assistantCloseX.addEventListener('click', closeAssistantModal);
+        if (assistantModal) {
+          assistantModal.addEventListener('click', function (e) {
+            if (e.target === assistantModal) closeAssistantModal();
+          });
+        }
+
+        document.querySelectorAll('.js-chat-chip').forEach(function (chip) {
+          chip.addEventListener('click', function () {
+            handleAssistantQuery(chip.getAttribute('data-q'));
+          });
+        });
+
+        if (assistantForm && assistantInput) {
+          assistantForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var val = assistantInput.value;
+            assistantInput.value = '';
+            handleAssistantQuery(val);
+          });
+        }
+
         // ESCAPE KEY FOR MODALS
         window.addEventListener('keydown', function (e) {
           if (e.key === 'Escape') {
             closeRegModal();
-            closeIgPopup();
+            closeRegWelcomeModal();
             closeMapChooser();
             closeWaChooser();
             closeRentalModal();
+            closeAssistantModal();
           }
         });
       })();
